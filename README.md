@@ -7,7 +7,7 @@
 ## Definicja problemu biznesowego
 
 **Wielu wynajmujących nie wie, jaką cenę ustalić za noc.**
-Ustalają ją "na oko" albo porównują się do innych ofert, ale często popełniają błędy – dają za wysoką cenę (nikt nie rezerwuje) albo za niską (tracą pieniądze).
+Ustalają ją "na oko" albo porównują się do innych ofert, ale często popełniają błędy - dają za wysoką cenę (nikt nie rezerwuje) albo za niską (tracą pieniądze).
 
 **Celem projektu jest stworzenie mechanizmu, który inteligentnie zasugeruje sensowną cenę za noc.**
 
@@ -23,7 +23,7 @@ Wdrożenie takiego rozwiązania może przyczynić się do:
 
 Celem modelowania jest **zbudowanie systemu, który automatycznie zasugeruje oferentowi cenę za nocleg (w USD) na etapie dodawania nowej oferty.**
 
-Jest to **problem regresji**, ponieważ model ma przewidywać jedną liczbę – wartość ceny – na podstawie zestawu cech opisujących ofertę.
+Jest to **problem regresji**, ponieważ model ma przewidywać jedną liczbę - wartość ceny - na podstawie zestawu cech opisujących ofertę.
 
 Do trenowania modelu wykorzystamy dane z pliku `listings.csv`, zawierające _ceny bazowe (price), które staramy się przewidzieć_, oraz wybrane cechy ofert istotne dla modelowania (np. lokalizacja, typ lokalu, liczba łóżek). Nie będziemy korzystać ze wszystkich dostępnych kolumn.
 
@@ -31,17 +31,17 @@ W projekcie planujemy zastosować **dwa modele:**
 
 - model bazowy: **regresja liniowa** - najprostszy możliwy model regresyjny, który nie wymaga strojenia i pozwala szybko uzyskać pierwsze predykcje
 
-- model docelowy: **Random Forest Regressor** – nieliniowy model, który lepiej uchwyci zależności w danych i powinien zapewnić wyższą jakość predykcji
+- model docelowy: **Random Forest Regressor** - nieliniowy model, który lepiej uchwyci zależności w danych i powinien zapewnić wyższą jakość predykcji
 
 **Założenia:**
 
-- Model ma przewidywać ogólną, startową cenę za noc – wartość, którą oferent może przyjąć jako domyślną przy dodawaniu oferty
+- Model ma przewidywać ogólną, startową cenę za noc - wartość, którą oferent może przyjąć jako domyślną przy dodawaniu oferty
 
-- Cena nie dotyczy konkretnej daty – ma charakter typowy i uśredniony na podstawie podobnych ofert
+- Cena nie dotyczy konkretnej daty - ma charakter typowy i uśredniony na podstawie podobnych ofert
 
 - Dane treningowe pochodzą z `listings.csv`- zawierają zarówno cechy ofert, jak i ceny bazowe
 
-- Model ma pełnić rolę wspierającą – dostarczać rozsądną sugestię, którą użytkownik może zmienić
+- Model ma pełnić rolę wspierającą - dostarczać rozsądną sugestię, którą użytkownik może zmienić
 
 ## Kryterium sukcesu
 
@@ -53,13 +53,13 @@ Porównamy model bazowy (regresja liniowa) i model docelowy (Random Forest Regre
 
 ### Użyteczność dla użytkownika
 
-Ponieważ model ma wspierać oferenta przy ustalaniu ceny, rzeczywistą skuteczność należy ocenić na podstawie zachowania użytkowników.
+Ponieważ model ma wspierać oferenta przy ustalaniu ceny, **rzeczywistą skuteczność należy ocenić na podstawie zachowania użytkowników.**
 
 Po zamodelowaniu problemu **powinniśmy zapewnić możliwość przeprowadzenia eksperymentu A/B**, w ramach którego użytkownicy otrzymają sugestie cenowe z różnych modeli.
 
 Celem eksperymentu będzie sprawdzenie, jak bardzo wystawiający modyfikują zaproponowaną przez system cenę, w zależności od użytego modelu (bazowego lub docelowego).
 
-## Analiza danych z perspektywy realizacji zadań
+## Analiza danych z perspektywy realizacji zadań (TODO - do poprawy)
 
 Z otrzymanych plików interesują nas pliki `calender` i `listings`
 
@@ -67,8 +67,8 @@ Odnośnie pliku calender:
 
 - Nie znamy kontekstu przechowywanych informacji, czy jest to zapis wszystkich dni dla każdego lokalu i ich dostępności tego konretnengo dnia?
 - Kolumna available zawiera wartości t/f, ale nie jest jasne, czy dotyczą one dostępności konkretnego dnia (date) czy ogólnej dostępności oferty.
-- Kolumna adjusted_price jest w większości pusta – nie wiadomo, czym różni się od price.
-- Kolumny minimum_nights i maximum_nights są niejednoznaczne – nie wiadomo, czy odnoszą się do całej oferty czy tylko do konkretnego dnia.
+- Kolumna adjusted_price jest w większości pusta - nie wiadomo, czym różni się od price.
+- Kolumny minimum_nights i maximum_nights są niejednoznaczne - nie wiadomo, czy odnoszą się do całej oferty czy tylko do konkretnego dnia.
 - Wartość price wygląda na cenę za noc dla danego dnia (date), czy jest to prawda? Niektóre ceny są wyjątkowe wysokie (12000$ za jedną noc) nie jest to błąd?
 
 Odnośnie pliku listings:
@@ -79,6 +79,23 @@ Odnośnie pliku listings:
 W danych są liczne braki (pojedyńcze komórki są puste).
 
 Dane pozwalają na rozpoczęcie pracy, ale będziemy je jeszcze czyścić i przekształcać.
+
+## Implementacja i udostępnienie predykcji
+
+W ramach etapu drugiego planujemy przygotowanie **mikroserwisu**, który będzie wykorzystywany do **serwowania predykcji modelu.**
+
+Mikroserwis będzie przyjmował dane nowej oferty w **formacie JSON** i na ich podstawie zwracał zasugerowaną cenę.
+
+Rozwiązanie to umożliwi zarówno porównywanie modeli (w ramach eksperymentu A/B), jak i wykorzystanie systemu w środowisku produkcyjnym.
+
+## Potencjalne problemy
+
+Dane w `listings.csv` są aktualne (`koniec 2024`), ale z czasem mogą się zdezaktualizować. Model może wymagać ponownego trenowania lub douczenia na nowszych danych, aby utrzymać trafność predykcji.
+
+Dodatkowo, **użytkownik powinien być jasno poinformowany, że sugerowana cena to wyjściowa propozycja oparta na podobnych ofertach.**
+
+Nie uwzględnia sezonowości, wydarzeń ani dostępności.
+Brak takiej informacji może prowadzić do niepotrzebnego zastanawiania się, czy cena jest obowiązująca, co może zniechęcać do korzystania z funkcji.
 
 ## Terminy
 
