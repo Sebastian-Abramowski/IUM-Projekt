@@ -87,9 +87,7 @@ Po głębszej analizie zauważyliśmy, że wartości w kolumnie **neighbourhood_
 
 ## Ocena wykonalności
 
-Podsumowując, dostępne dane pozwalają na realizację zadania, jednak wymagają w pierwszej kolejności **zrozumienia źródeł braków, niespójności oraz nietypowych wartości**, które wydają się niepasujące do reszty. Konieczne będzie doprecyzowanie, co oznaczają niektóre pola i dlaczego występują w nich luki lub niejednolite wartości. Nawet jeśli dane zostaną później ujednolicone, nasz model i tak będzie opierał się wyłącznie na prostych, strukturalnych cechach dostępnych przy dodawaniu nowej oferty - takich jak liczba łóżek, typ lokalu czy minimalna liczba nocy.
-
-Bardziej złożone informacje, takie jak lokalizacja (`neighbourhood_cleansed`) czy udogodnienia (`amenities`), są w obecnej formie **zbyt niespójne i nieustrukturyzowane**, by mogły zostać sensownie wykorzystane w modelu - lista udogodnień zawiera powtarzające się elementy zapisane w różny sposób, często dotyczące mało istotnych rzeczy (np. "Shampoo", "Hangers"), a nazwa dzielnicy nie pozwala ani jednoznacznie ocenić atrakcyjności lokalizacji, ani określić, w jakim mieście znajduje się oferta.
+Zadanie wydaje się wykonalne, ale przed budową modelu potrzebujemy dokładniej zrozumieć **źródła braków, niespójności i nietypowych wartości w danych**. Konieczne jest również uzyskanie odpowiedzi na kilka **niejasności** oraz potwierdzenie, że przyjęte przez nas **założenia** co do znaczenia wybranych atrybutów są poprawne.
 
 ## Implementacja i udostępnienie predykcji
 
