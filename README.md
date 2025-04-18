@@ -53,32 +53,43 @@ Porównamy model bazowy (regresja liniowa) i model docelowy (Random Forest Regre
 
 ### Użyteczność dla użytkownika
 
-Ponieważ model ma wspierać oferenta przy ustalaniu ceny, **rzeczywistą skuteczność należy ocenić na podstawie zachowania użytkowników.**
+Ponieważ model ma wspierać wystawiającego przy ustalaniu ceny, **rzeczywistą skuteczność należy ocenić na podstawie zachowania użytkowników.**
 
 Po zamodelowaniu problemu **powinniśmy zapewnić możliwość przeprowadzenia eksperymentu A/B**, w ramach którego użytkownicy otrzymają sugestie cenowe z różnych modeli.
 
 Celem eksperymentu będzie sprawdzenie, jak bardzo wystawiający modyfikują zaproponowaną przez system cenę, w zależności od użytego modelu (bazowego lub docelowego).
 
-## Analiza danych z perspektywy realizacji zadań (TODO - do poprawy)
+## Analiza danych z perspektywy realizacji zadań
 
-Z otrzymanych plików interesują nas pliki `calender` i `listings`
+Nasze modelowanie opieramy na danych z pliku `listings.csv`, który zawiera m.in. kolumnę `price`. Zakładamy, że jest to ogólna, deklarowana przez wystawiającego cena bazowa za jedną noc - czyli dokładnie taka, jaką chcielibyśmy sugerować podczas dodawania nowej oferty.
 
-Odnośnie pliku calender:
+Dla porównania, plik `calendar.csv` zawiera ceny (`price`) przypisane do konkretnych dat. Zakładamy, że jest to rzeczywista cena za noc w określonym miejscu w danym dniu, odzwierciedlająca sezonowość, dostępność i ewentualne zmiany.
 
-- Nie znamy kontekstu przechowywanych informacji, czy jest to zapis wszystkich dni dla każdego lokalu i ich dostępności tego konretnengo dnia?
-- Kolumna available zawiera wartości t/f, ale nie jest jasne, czy dotyczą one dostępności konkretnego dnia (date) czy ogólnej dostępności oferty.
-- Kolumna adjusted_price jest w większości pusta - nie wiadomo, czym różni się od price.
-- Kolumny minimum_nights i maximum_nights są niejednoznaczne - nie wiadomo, czy odnoszą się do całej oferty czy tylko do konkretnego dnia.
-- Wartość price wygląda na cenę za noc dla danego dnia (date), czy jest to prawda? Niektóre ceny są wyjątkowe wysokie (12000$ za jedną noc) nie jest to błąd?
+Ze względu na to, jakie dane znajdują się w `calendar.csv`, plik ten raczej nie będzie przez nas wykorzystywany - choć musimy się jeszcze upewnić, czy poprawnie interpretujemy znaczenie zawartej tam ceny (`price`) (warto wspomnieć, że wartości te są bardzo zróżnicowane - od kilkudziesięciu do nawet 12 000 dolarów).
 
-Odnośnie pliku listings:
+Jednym z problemów, który rzuca się w oczy podczas analizy danych, są ogólne **braki w danych** - występują we wszystkich plikach, a szczególnie w listings.csv, który jest kluczowy dla naszego zadania.
 
-- Niewiemy co oznacza price, i czym się różni się od 'price' w calender
-- Niewiemy co oznaczają kolumny: host_location, host_is_superhost, host_neighbourhood, hoste_acceptance_rate, host_is_superhost, accommodates review_scores_accuracy, review_scores_cleanliness, review_scores_checkin, review_scores_communication, review_scores_location, review_scores_value, license, minimum_nights, maximum_nights, minimum_minimum_nights, maximum_minimum_nights, minimum_maximum_nights, maximum_maximum_nights, minimum_nights_avg_ntm, maximum_nights_avg_ntm, calendar_updated, has_availability, availability_30, availability_60, availability_90, availability_365, license, instant_bookable
+Wstępnie przeanalizowaliśmy zawartość pliku `listings.csv` i zidentyfikowaliśmy kilka kolumn, które potencjalnie weźmiemy pod uwagę w naszym modelu:
 
-W danych są liczne braki (pojedyńcze komórki są puste).
+- price - cena bazowa za noc, czyli wartość, którą będziemy w przyszłości przewidywać w naszym modelu (target)
 
-Dane pozwalają na rozpoczęcie pracy, ale będziemy je jeszcze czyścić i przekształcać.
+- **accommodates** - liczba osób, ktore może pomieścić lokal
+- **bedrooms**, **beds** - liczba sypialni i łóżek. Zauważyliśmy, że w niektórych przypadkach dane te są nielogiczne lub niespójne - np. lokal może mieć 2 miejsca dla gości i 17 sypialni, albo 5 miejsc i 8 łóżek. Może to świadczyć o błędach wprowadzania danych lub niestandardowym sposobie ich zliczania
+- **room_type**, **property_type** - typ lokalu i rodzaj obiektu. Na pierwszy rzut oka kolumny te niosą niemal identyczną informację, jednak dane w nich nie zawsze są spójne - zdarzają się przypadki, w których jedna z nich jest pusta, a druga wypełniona. Wymaga to doprecyzowania, czym dokładnie różnią się te pola i skąd wynika ta niespójność
+- **bathrooms** - liczba łazienek. Zauważyliśmy, że w danych pojawiają się wartości niecałkowite, np. 1.5 czy 2.5, których znaczenie nie jest dla nas do końca jasne - może to sugerować niejednoznaczne zasady liczenia łazienek i wymaga doprecyzowania
+- ~~amenities~~ - lista udogodnień dostępnych w ofercie. Choć wydaje się, że kolumna ta mogłaby być przydatna, trudno sensownie z niej skorzystać, ponieważ te same rzeczy są zapisywane na wiele różnych sposobów - np. telewizor może być opisany jako "TV", "50 inch HDTV with standard cable", "HDTV with Netflix, Amazon Prime Video", czy "TV with Apple TV, Disney+, Netflix". Dodatkowo wiele wpisów dotyczy mało istotnych elementów, takich jak "Hangers" czy "Shower gel", co sprawia, że nawet liczba udogodnień nie jest dobrą miarą. Z tego względu kolumna amenities średnio nadaje się do bezpośredniego wykorzystania przy modelowaniu.
+- **minimum_nights**, **maximum_nights** - minimalna i maksymalna liczba nocy możliwa do zarezerwowania. Mogą wskazywać na typ wynajmu (krótko vs długoterminowy), choć pojawiają się wartości skrajne (np. miminalna liczba nocy 1000), które wymagają uwagi
+- ~~number_of_reviews~~, ~~review_scores_rating~~ - liczba opinii oraz ogólna ocena oferty (od 1 do 5). Atrybuty te mogą mieć sens przy opisie istniejących ofert, ale nie możemy ich wykorzystać w naszym przypadku, ponieważ przy dodawaniu nowej oferty takie informacje jeszcze nie istnieją
+- ~~neighbourhood_cleansed~~ - dzielnica, w której znajduje się lokal. Rozważaliśmy użycie tej kolumny jako wskaźnika lokalizacji, ale ze względu na dużą liczbę unikalnych, niespójnych nazw i brak struktury przestrzennej raczej nie nadaje się do wykorzystania w naszym modelu. Może też powodować problemy, gdy pojawi się nowa dzielnica, której model wcześniej nie widział.
+  Kolumny latitude i longitude zawierają współrzędne geograficzne, ale nie dają wprost informacji o jakości lokalizacji - nie wiadomo na ich podstawie, czy lokal znajduje się w centrum, w dzielnicy turystycznej, czy na jego obrzeżach. Uznajemy, że nawet po przetworzeniu trudno byłoby sensownie wykorzystać te dane w naszym modelu, dlatego nie planujemy ich używać.
+
+Po głębszej analizie zauważyliśmy, że wartości w kolumnie **neighbourhood_cleansed** odpowiadają nazwom dzielnic Stambułu. Jeśli faktycznie wszystkie oferty w zbiorze znajdują się w tym mieście, możemy wziąć lokalizację pod uwagę (wtedy możemy je pogrupować do kilku kategorii, np. centrum, dzielnice standardowe, obrzeża). **Żeby to zrobić, potrzebujemy jednak jednoznacznego potwierdzenia, że dane obejmują wyłącznie oferty ze Stambułu.**
+
+## Ocena wykonalności
+
+Podsumowując, dostępne dane pozwalają na realizację zadania, jednak wymagają w pierwszej kolejności **zrozumienia źródeł braków, niespójności oraz nietypowych wartości**, które wydają się niepasujące do reszty. Konieczne będzie doprecyzowanie, co oznaczają niektóre pola i dlaczego występują w nich luki lub niejednolite wartości. Nawet jeśli dane zostaną później ujednolicone, nasz model i tak będzie opierał się wyłącznie na prostych, strukturalnych cechach dostępnych przy dodawaniu nowej oferty - takich jak liczba łóżek, typ lokalu czy minimalna liczba nocy.
+
+Bardziej złożone informacje, takie jak lokalizacja (`neighbourhood_cleansed`) czy udogodnienia (`amenities`), są w obecnej formie **zbyt niespójne i nieustrukturyzowane**, by mogły zostać sensownie wykorzystane w modelu - lista udogodnień zawiera powtarzające się elementy zapisane w różny sposób, często dotyczące mało istotnych rzeczy (np. "Shampoo", "Hangers"), a nazwa dzielnicy nie pozwala ani jednoznacznie ocenić atrakcyjności lokalizacji, ani określić, w jakim mieście znajduje się oferta.
 
 ## Implementacja i udostępnienie predykcji
 
@@ -95,7 +106,7 @@ Dane w `listings.csv` są aktualne (`koniec 2024`), ale z czasem mogą się zdez
 Dodatkowo, **użytkownik powinien być jasno poinformowany, że sugerowana cena to wyjściowa propozycja oparta na podobnych ofertach.**
 
 Nie uwzględnia sezonowości, wydarzeń ani dostępności.
-Brak takiej informacji może prowadzić do niepotrzebnego zastanawiania się, czy cena jest obowiązująca, co może zniechęcać do korzystania z funkcji.
+Brak takiej informacji może powodować niepewność co do sensowności sugerowanej ceny, co może zniechęcać do korzystania z funkcji.
 
 ## Terminy
 
