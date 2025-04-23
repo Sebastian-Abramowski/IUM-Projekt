@@ -59,7 +59,7 @@ Po zamodelowaniu problemu **powinniśmy zapewnić możliwość przeprowadzenia e
 
 Celem eksperymentu będzie sprawdzenie, jak bardzo wystawiający modyfikują zaproponowaną przez system cenę, w zależności od użytego modelu (bazowego lub docelowego).
 
-**Oczekiwanym rezultatem jest, że użytkownicy rzadziej modyfikują cenę sugerowaną przez model docelowy.**
+**Oczekujemy, że użytkownicy będą rzadziej modyfikować ceny sugerowane przez model docelowy, co będzie świadczyć o jego lepszym dopasowaniu do oczekiwań.**
 
 ## Analiza danych z perspektywy realizacji zadań
 
@@ -75,7 +75,7 @@ Wstępnie przeanalizowaliśmy zawartość pliku `listings.csv` i zidentyfikowali
 
 - **_price_** - cena bazowa za noc, czyli wartość, którą będziemy w przyszłości przewidywać w naszym modelu (target)
 
-- **accommodates** - liczba osób, ktore może pomieścić lokal
+- **accommodates** - liczba osób, które może pomieścić lokal
 - **bedrooms**, **beds** - liczba sypialni i łóżek
 
 Zauważyliśmy, że w niektórych przypadkach dane te są nielogiczne lub niespójne - np. lokal może mieć 2 miejsca dla gości i 17 sypialni, albo 5 miejsc i 8 łóżek. Może to świadczyć o błędach wprowadzania danych lub niestandardowym sposobie ich zliczania.
