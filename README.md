@@ -100,8 +100,10 @@ Mogą wskazywać na typ wynajmu (krótkoterminowy vs długoterminowy), choć w d
 
 Atrybuty te mogą mieć sens przy opisie istniejących ofert, ale nie możemy ich wykorzystać w naszym przypadku, ponieważ przy dodawaniu nowej oferty takie informacje jeszcze nie istnieją.
 
-- ~~neighbourhood_cleansed~~ - dzielnica, w której znajduje się lokal. Rozważaliśmy użycie tej kolumny jako wskaźnika lokalizacji, ale ze względu na dużą liczbę unikalnych, niespójnych nazw i brak struktury przestrzennej raczej nie nadaje się do wykorzystania w naszym modelu. Może też powodować problemy, gdy pojawi się nowa dzielnica, której model wcześniej nie widział.
-  Kolumny latitude i longitude zawierają współrzędne geograficzne, ale nie dają wprost informacji o jakości lokalizacji - nie wiadomo na ich podstawie, czy lokal znajduje się w centrum, w dzielnicy turystycznej, czy na jego obrzeżach. Uznajemy, że nawet po przetworzeniu trudno byłoby sensownie wykorzystać te dane w naszym modelu, dlatego nie planujemy ich używać.
+- ~~neighbourhood_cleansed~~ - dzielnica, w której znajduje się lokal
+
+Rozważaliśmy użycie tej kolumny jako wskaźnika lokalizacji, ale ze względu na dużą liczbę unikalnych, niespójnych nazw i brak struktury przestrzennej raczej nie nadaje się do wykorzystania w naszym modelu. Może też powodować problemy, gdy pojawi się nowa dzielnica, której model wcześniej nie widział.
+Kolumny latitude i longitude zawierają współrzędne geograficzne, ale nie dają wprost informacji o jakości lokalizacji - nie wiadomo na ich podstawie, czy lokal znajduje się w centrum, w dzielnicy turystycznej, czy na jego obrzeżach. Uznajemy, że nawet po przetworzeniu trudno byłoby sensownie wykorzystać te dane w naszym modelu, dlatego nie planujemy ich używać.
 
 Po głębszej analizie zauważyliśmy, że wartości w kolumnie **neighbourhood_cleansed** odpowiadają nazwom dzielnic Stambułu. Jeśli faktycznie wszystkie oferty w zbiorze znajdują się w tym mieście, możemy wziąć lokalizację pod uwagę (wtedy możemy je pogrupować do kilku kategorii, np. centrum, dzielnice standardowe, obrzeża). **Żeby to zrobić, potrzebujemy jednak jednoznacznego potwierdzenia, że dane obejmują wyłącznie oferty ze Stambułu.**
 
