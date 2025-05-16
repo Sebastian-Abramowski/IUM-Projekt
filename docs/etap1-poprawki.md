@@ -91,13 +91,13 @@ Poprawka:
 Jako metrykę oceny jakości predykcji przyjmujemy RMSE (Root Mean Squared Error),
 mierzy ona średni błąd predykcji i kładzie większy nacisk na duże odchylenia.
 
-Za sukces analityczny uznajemy sytuację, w której model osiąga RMSE mniejsze niż model naiwny (4282.36) oraz model bazowy (4071.42).
+`Za sukces analityczny uznajemy sytuację, w której model osiąga RMSE mniejsze niż model naiwny (4282.36) oraz model bazowy (4071.42)`.
 
 #### Biznesowe kryterium sukcesu
 
 Biznesowe kryterium sukcesu opieramy na wyniku eksperymentu A/B, w którym użytkownicy będą losowo otrzymywać sugerowaną cenę z modelu bazowego lub modelu zaawansowanego.
 
-Za sukces uznajemy sytuację, w której średnia zmiana ceny wprowadzana przez użytkowników po otrzymaniu sugestii z modelu zaawansowanego jest mniejsza niż w przypadku modelu bazowego, a także gdy średnia modyfikacja ceny nie przekracza 20% względem wartości zaproponowanej przez model zaawansowany.
+`Za sukces uznajemy sytuację, w której średnia zmiana ceny wprowadzana przez użytkowników po otrzymaniu sugestii z modelu zaawansowanego jest mniejsza niż w przypadku modelu bazowego, a także gdy średnia modyfikacja ceny nie przekracza 20% względem wartości zaproponowanej przez model zaawansowany`.
 
 ---
 
@@ -199,7 +199,7 @@ Jak wygląda sytuacja z cenami w poszczególnych dzielnicach?
 
 <img src="./figures/neighbourhood_cleaned_median_values.png" alt="bathrooms" width="500"/>
 
-<img src="./figures/neighbourhood_cleaned_median_values_most_popular.pngg" alt="bathrooms" width="500"/>
+<img src="./figures/neighbourhood_cleaned_median_values_most_popular.png" alt="bathrooms" width="500"/>
 
 #### Zmienna celu price
 
@@ -227,11 +227,9 @@ Widać potencjalne problemy, gdy liczba łóżek jest mniejsza niż liczba sypia
 
 Widać potencjalne problemy, gdy liczba możliwych osób jest mniejsza od liczby łóżek oraz, gdy przy zerowej liczbie łóżek mamy niezerową liczbę osób, które mogą się zmieścić w lokalu.
 
-</br>
+</br></br>
 
-Kolumna amentities
-
-Sprawdziliśmy, że jest 2057 unikalnych wartości. Dlatego zdecydowaliśmy się nie korzystać z tej kolumny, bo wymagałoby to dużo pracy, aby te dane doprowadzić do formy, która by nam odpowiadała.
+Kolumna amentities - sprawdziliśmy, że jest 2057 unikalnych wartości. Dlatego zdecydowaliśmy się nie korzystać z tej kolumny, bo wymagałoby to dużo pracy, aby te dane doprowadzić do formy, która by nam odpowiadała.
 
 ### Ilość braków
 
@@ -267,17 +265,17 @@ W przypadku zmiennej ciągłej price oraz dyskretnych wartości liczbowych do mi
 
 ---
 
-W przypadku zmiennej ciągłej price oraz kategorycznych zmiennych wejściowych podzieliliśmy zmienną celu na 20 przedziałów. Dzięki temu obie zmienne przyjmują wartości dyskretne, co pozwala na zastosowanie współczynnika informacji wzajemnej.
+W przypadku zmiennej ciągłej price oraz kategorycznych zmiennych wejściowych podzieliliśmy zmienną celu na 20 przedziałów. Dzięki temu obie zmienne przyjmują wartości dyskretne, co pozwala na zastosowanie `współczynnika informacji wzajemnej`.
 
 <img src="./figures/corr_mutual_info_score.png" alt="bathrooms" width="500"/>
 
 </br>
 
-Atrybuty, które potencjalnie braliśmy pod uwagę, niosą pewną informację względem zmiennej celu. Wyjątkiem jest atrybut max_nights, którego nie planujemy używać, biorąc pod uwagę uzyskaną korelację.
+Atrybuty, które potencjalnie braliśmy pod uwagę, niosą pewną informację względem zmiennej celu. Wyjątkiem jest atrybut `max_nights`, którego nie planujemy używać, biorąc pod uwagę uzyskaną korelację.
 
 ## Aktualizacja oceny wykonalności
 
-Ze względu na potencjalne problemy ze zmienną celu (opisane wcześniej - niejasność, dziwne wartości, duże wahania), liczne nieprawidłowości w danych (niespójności, braki, wartości odstające), a także wyniki uzyskane we wstępnych eksperymentach z różnymi modelami, uważamy, że przy obecnym zestawie danych nie da się zbudować modelu spełniającego biznesowe kryterium sukcesu.
+Ze względu na potencjalne problemy ze zmienną celu (opisane wcześniej - niejasność, dziwne wartości, duże wahania), liczne nieprawidłowości w danych (niespójności, braki, wartości odstające), a także wyniki uzyskane we wstępnych eksperymentach z różnymi modelami, uważamy, że przy obecnym zestawie danych `nie da się zbudować modelu spełniającego biznesowe kryterium sukcesu`.
 
 Dodatkowo przewidujemy trudności w stworzeniu modelu, który byłby znacząco lepszy od modelu naiwnego.
 
