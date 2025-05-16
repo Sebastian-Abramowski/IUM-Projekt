@@ -62,7 +62,8 @@ Wyniki modelu zaawansowanego na zbiorze testowym po lekkich transformacjach dany
 
 Wnioski:
 
-Wydaje się, że trudno będzie z dostępnych danych zbudować dobrą i użyteczną predykcję. Albo dane są niewystarczające, żeby uzyskać model wyraźnie lepszy od modelu bazowego, albo my jesteśmy bezużyteczni w naszych próbach.
+Choć model zaawansowany rzeczywiście poprawia predykcję względem modelu bazowego, to błędy nadal są zbyt duże, by mówić o praktycznej użyteczności.
+Albo dane są niewystarczające, żeby uzyskać model wyraźnie lepszy od modelu bazowego, albo my jesteśmy bezużyteczni w naszych próbach.
 
 ---
 
@@ -149,7 +150,7 @@ Zmienna bathrooms przyjmuje wartości od 0 do 25 (też **niecałkowite** - co wy
 
 <img src="./figures/accommodates_values.png" alt="bathrooms" width="500"/>
 
-Zmienna accommodates przyjmuje wartośći całkowite od 1 do 16. Wartości większe niż 16 nie są pokazane na wykresie, ale są to znacznie rzadsze przypadki.
+Zmienna accommodates przyjmuje wartośći całkowite od 1 do 16. Wartości większe niż 10 nie są pokazane na wykresie, ale są to znacznie rzadsze przypadki.
 
 #### Zmienna bedrooms
 
@@ -171,7 +172,7 @@ Zmienna room_type przyjmuje tylko 4 wartości pokazane na wykresie.
 
 #### Zmienna property_type
 
-<img src="./figures/room_type_values.png" alt="bathrooms" width="500"/>
+<img src="./figures/property_type_values.png" alt="bathrooms" width="500"/>
 
 Zmienna property_type przyjmuje 58 unikalnych wartości. Większość z nich pojawia się rzadko i nie są pokazane na wykresie.
 
@@ -181,13 +182,15 @@ Zmienna property_type przyjmuje 58 unikalnych wartości. Większość z nich poj
 
 <img src="./figures/maximum_nights_zoomed.png" alt="bathrooms" width="500"/>
 
+Zerowa maksymalna liczban nocy nie wydaje się być sensowna. Chyba, że jest to taka blokada na rezerwowanie lokalu.
+
 #### Zmienna minimum_nights
 
 <img src="./figures/minimum_nights_values.png" alt="bathrooms" width="500"/>
 
 <img src="./figures/minimum_nights_zoomed.png" alt="bathrooms" width="500"/>
 
-Wartości większe niż 101 są bardzo rzadkie i nie są pokazane na wykresie.
+Wartości większe niż 101 są bardzo rzadkie i nie są pokazane na wykresie. Dziwne trochę, że najczęciej występujaca liczba minimalnych nocy to 100 (czyli prawdopodobnie to są długoterminowe oferty).
 
 #### Zmienna neighbourhood_cleaned
 
@@ -209,7 +212,7 @@ Jak wygląda sytuacja z cenami w poszczególnych dzielnicach?
 
 <img src="./figures/describes.png" alt="bathrooms" width="500"/>
 
-Zmienna price tak jak wcześniej już wspominaliśmy nas nie pokoi. Nie dość że ma dziwnie duże wartości, to jeszcze niektóre z nich są skrajnie duże oraz ogólnie różnice między wartoścami są spore. Pokazuje to, że są potencjalne problemy ze zmienną price.
+Zmienna price tak jak wcześniej już wspominaliśmy nas niepokoi. Nie dość że ma dziwnie duże wartości, to jeszcze niektóre z nich są skrajnie duże oraz ogólnie różnice między wartoścami są spore. Pokazuje to, że są potencjalne problemy ze zmienną price.
 
 ### Dodatkowe zależności
 
@@ -275,8 +278,8 @@ Atrybuty, które potencjalnie braliśmy pod uwagę, niosą pewną informację wz
 
 ## Aktualizacja oceny wykonalności
 
-Ze względu na potencjalne problemy ze zmienną celu (opisane wcześniej - niejasność, dziwne wartości, duże wahania), liczne nieprawidłowości w danych (niespójności, braki, wartości odstające), a także wyniki uzyskane we wstępnych eksperymentach z różnymi modelami, uważamy, że przy obecnym zestawie danych `nie da się zbudować modelu spełniającego biznesowe kryterium sukcesu`.
+Ze względu na potencjalne problemy ze zmienną celu (opisane wcześniej - niejasność, dziwne wartości, duże wahania), liczne nieprawidłowości w danych (niespójności, braki, wartości odstające, nielogiczne wartości), a także wyniki uzyskane we wstępnych eksperymentach z różnymi modelami, uważamy, że przy obecnym zestawie danych `nie da się zbudować modelu spełniającego biznesowe kryterium sukcesu`.
 
-Dodatkowo przewidujemy trudności w stworzeniu modelu, który byłby znacząco lepszy od modelu naiwnego.
+Choć udało się poprawić wyniki względem modelu bazowego, przewidujemy trudności w stworzeniu modelu, który byłby praktycznie użyteczny przy obecnych danych.
 
 Uzyskane rezultaty są niezadowalające, a jakość danych wydaje się być głównym ograniczeniem dalszego modelowania.
