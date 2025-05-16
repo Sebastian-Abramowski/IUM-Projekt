@@ -62,7 +62,7 @@ Wyniki modelu zaawansowanego na zbiorze testowym po lekkich transformacjach dany
 
 Wnioski:
 
-Wydaje się, że trudno będzie z dostępnych danych zbudować dobrą i użyteczną predykcję. Albo dane są niewystarczające, żeby uzyskać model wyraźnie lepszy od modelu naiwnego, albo my jesteśmy bezużyteczni w naszych próbach.
+Wydaje się, że trudno będzie z dostępnych danych zbudować dobrą i użyteczną predykcję. Albo dane są niewystarczające, żeby uzyskać model wyraźnie lepszy od modelu bazowego, albo my jesteśmy bezużyteczni w naszych próbach.
 
 ---
 
@@ -139,6 +139,100 @@ Uwaga:
 
 Poprawka:
 
+#### Zmienna bathrooms
+
+<img src="./figures/bathrooms_values.png" alt="bathrooms" width="500"/>
+
+Zmienna bathrooms przyjmuje wartości od 0 do 25 (też **niecałkowite** - co wydaje się problemem). Wartości większe niż 8.5 nie są pokazane na wykresie, ponieważ występują bardzo rzadko i są to pojedyncze przypadki.
+
+#### Zmienna accommodates
+
+<img src="./figures/accommodates_values.png" alt="bathrooms" width="500"/>
+
+Zmienna accommodates przyjmuje wartośći całkowite od 1 do 16. Wartości większe niż 16 nie są pokazane na wykresie, ale są to znacznie rzadsze przypadki.
+
+#### Zmienna bedrooms
+
+<img src="./figures/bedrooms_values.png" alt="bathrooms" width="500"/>
+
+Zmienna bedrooms przyjmuje wartości całkowite od 0 do 49. Wartości większe niz 8 są bardzo rzadkie i nie są pokazane na wykresie.
+
+#### Zmienna beds
+
+<img src="./figures/beds_values.png" alt="bathrooms" width="500"/>
+
+Zmienna beds przyjmuje wartości całkowite od 0 do 50. Wartości większe niż 10 są bardzo rzadkie i nie są pokazane na wykresie.
+
+#### Zmienna room_type
+
+<img src="./figures/room_type_values.png" alt="bathrooms" width="500"/>
+
+Zmienna room_type przyjmuje tylko 4 wartości pokazane na wykresie.
+
+#### Zmienna property_type
+
+<img src="./figures/room_type_values.png" alt="bathrooms" width="500"/>
+
+Zmienna property_type przyjmuje 58 unikalnych wartości. Większość z nich pojawia się rzadko i nie są pokazane na wykresie.
+
+#### Zmienna maxiumum_nights
+
+<img src="./figures/maximum_nights_values.png" alt="bathrooms" width="500"/>
+
+<img src="./figures/maximum_nights_zoomed.png" alt="bathrooms" width="500"/>
+
+#### Zmienna minimum_nights
+
+<img src="./figures/minimum_nights_values.png" alt="bathrooms" width="500"/>
+
+<img src="./figures/minimum_nights_zoomed.png" alt="bathrooms" width="500"/>
+
+Wartości większe niż 101 są bardzo rzadkie i nie są pokazane na wykresie.
+
+#### Zmienna neighbourhood_cleaned
+
+Zawiera 39 dzielnic Stambułu.
+
+<img src="./figures/neighbourhood_cleaned_values.png" alt="bathrooms" width="500"/>
+
+Jak wygląda sytuacja z cenami w poszczególnych dzielnicach?
+
+<img src="./figures/neighbourhood_cleaned_median_values.png" alt="bathrooms" width="500"/>
+
+<img src="./figures/neighbourhood_cleaned_median_values_most_popular.pngg" alt="bathrooms" width="500"/>
+
+#### Zmienna celu price
+
+<img src="./figures/price.png" alt="bathrooms" width="500"/>
+
+#### Statystyki opisowe
+
+<img src="./figures/describes.png" alt="bathrooms" width="500"/>
+
+Zmienna price tak jak wcześniej już wspominaliśmy nas nie pokoi. Nie dość że ma dziwnie duże wartości, to jeszcze niektóre z nich są skrajnie duże oraz ogólnie różnice między wartoścami są spore. Pokazuje to, że są potencjalne problemy ze zmienną price.
+
+### Dodatkowe zależności
+
+Poniżej pokazujemy pewne zależności w danych, które nas zaniepokoiły w pierwszej iteracji etapu pierwszego, ale wtedy nie pokazaliśmy tego na wykresach.
+
+</br>
+
+<img src="./figures/beds_and_bedrooms.png" alt="bathrooms" width="500"/>
+
+Widać potencjalne problemy, gdy liczba łóżek jest mniejsza niż liczba sypialni oraz, gdy przy zerowej liczbie sypialni mamy niezerową liczbę łóżek.
+
+</br>
+
+<img src="./figures/accomodates_and_beds.png" alt="bathrooms" width="500"/>
+
+Widać potencjalne problemy, gdy liczba możliwych osób jest mniejsza od liczby łóżek oraz, gdy przy zerowej liczbie łóżek mamy niezerową liczbę osób, które mogą się zmieścić w lokalu.
+
+</br>
+
+Kolumna amentities
+
+Sprawdziliśmy, że jest 2057 unikalnych wartości. Dlatego zdecydowaliśmy się nie korzystać z tej kolumny, bo wymagałoby to dużo pracy, aby te dane doprowadzić do formy, która by nam odpowiadała.
+
 ### Ilość braków
 
 Uwaga:
@@ -149,6 +243,16 @@ Uwaga:
 
 Poprawka:
 
+We wszystkich dostępnych plikach występuje sporo braków w danych.
+
+W pliku `listings.txt`, który dla nas jest najważniejszy, tak wyglądają braki w danych:
+
+<img src="./figures/listings_nulls.png" alt="bathrooms" width="500"/>
+
+We wszystkich nas interesujących kolumnach występują braki na poziomie większym niż 15%.
+
+<img src="./figures/interesting_data_nulls.png" alt="bathrooms" width="500"/>
+
 ### Zależność między zmiennymi wejściowymi a zmienną celu
 
 Uwaga:
@@ -157,60 +261,24 @@ Uwaga:
 - czy jesteście Państwo pewni, że zmienne wejściowe niosą jakąś informację o zmiennej celu?
 ```
 
-Poprawka:
+W przypadku zmiennej ciągłej price oraz dyskretnych wartości liczbowych do mierzenia kolelacji użyliśmy `korelacji Spearmana`.
+
+<img src="./figures/corr_spearman.png" alt="bathrooms" width="500"/>
 
 ---
 
-### Raczej tu będzie po prostu analiza danych, nie problemów
+W przypadku zmiennej ciągłej price oraz kategorycznych zmiennych wejściowych podzieliliśmy zmienną celu na 20 przedziałów. Dzięki temu obie zmienne przyjmują wartości dyskretne, co pozwala na zastosowanie współczynnika informacji wzajemnej.
 
+<img src="./figures/corr_mutual_info_score.png" alt="bathrooms" width="500"/>
 
-### Dodatkowe zbadanie naszych wcześniej zauważonych błędów z danymi
+</br>
 
-Poniżej analizujemy problemy, które zauważyliśmy już w poprzednim etapie, ale wtedy nie potwierdziliśmy w żaden sposób naszych obserwacji za pomocą wykresów.
+Atrybuty, które potencjalnie braliśmy pod uwagę, niosą pewną informację względem zmiennej celu. Wyjątkiem jest atrybut max_nights, którego nie planujemy używać, biorąc pod uwagę uzyskaną korelację.
 
-#### Zależność liczby sypialni a łóżkami
+## Aktualizacja oceny wykonalności
 
-Tak jak na oko udało nam się zauważyć, jest pewna niekonsekwencja w danych. Szczególnie to widać w przypadku jak mamy mniej łóżek niż sypialni.
+Ze względu na potencjalne problemy ze zmienną celu (opisane wcześniej - niejasność, dziwne wartości, duże wahania), liczne nieprawidłowości w danych (niespójności, braki, wartości odstające), a także wyniki uzyskane we wstępnych eksperymentach z różnymi modelami, uważamy, że przy obecnym zestawie danych nie da się zbudować modelu spełniającego biznesowe kryterium sukcesu.
 
+Dodatkowo przewidujemy trudności w stworzeniu modelu, który byłby znacząco lepszy od modelu naiwnego.
 
-
-#### Zależność między liczbą łóżek a liczbą osób, które może pomieścić mieszkanie
-
-Wykres, które sporządziliśmy, także potwierdza problem, który zauważliśmy. Dane nie do końca są spójne. Liczba łóżek i liczba osób powinna być bardzo podobna, przynajmniej się tak wydaje.
-
-#### Jaki wartości ma zmienna bathrooms
-
-Tak jak to wcześniej zauważyliśmy, jest dużo wartóści, które nie wydają się być sensowne. Część danych ma liczbę łazienek jako liczbę niecałkowitą, co nie ma sensu.
-
-
-#### Kolumna amenties
-
-Potwierdziliśmy, że jest bardzo dużo unikalnych wartości 2057. Trzy najczęstsze udogodnienia to: Wifi, Kitchen, Hair dryer. Tak jak ustaliliśmy, trzeba byłoby włożyć dużo pracy aby te dane jakoś znormalizować, ponieważ są one w różnej formie oraz różne rzeczy ludzie wpisują w udogodnienia.
-
-#### Kolumna neighbourhood_cleaned
-
-Tak jak wcześniej zauważyliśmy, dane przedstawiają wszystkie dzielnice Stambułu (39).
-Dla bardziej popularnych dzielnic jest bardzo dużo danych. Dane wydają się być bardzo sensowne.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Uzyskane rezultaty są niezadowalające, a jakość danych wydaje się być głównym ograniczeniem dalszego modelowania.
