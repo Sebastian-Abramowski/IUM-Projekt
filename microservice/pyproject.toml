@@ -1,0 +1,15 @@
+[tool.ruff]
+line-length = 115
+exclude = ["**/__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/__init__.py" = ["ALL"]
+"app/test/*.py" = ["I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+combine-as-imports = true
+lines-between-types = 1
