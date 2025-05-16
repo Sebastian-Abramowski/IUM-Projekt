@@ -1,5 +1,5 @@
-from app.models import Prediction, Decision
 from app.exceptions import EntityNotFoundException
+from app.models import Decision, Prediction
 
 
 class AbRepository:

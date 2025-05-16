@@ -2,9 +2,8 @@ from random import choice
 
 import pandas as pd
 
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from loguru import logger
-from fastapi import status
 
 from app.api.dependencies import AbRepositoryDependency
 from app.config.predicators import advanced_model, base_model
@@ -45,7 +44,4 @@ def get_ab_prediction(request: GetPredictionRequest, ab_repository: AbRepository
 def set_final_price(request: SetFinalPriceRequest, ab_repository: AbRepositoryDependency):
     logger.info(f"Received request to set final price {request.final_price}")
 
-    ab_repository.save_decision(
-        prediction_uuid=request.prediction_uuid,
-        final_price=request.final_price
-    )
+    ab_repository.save_decision(prediction_uuid=request.prediction_uuid, final_price=request.final_price)
