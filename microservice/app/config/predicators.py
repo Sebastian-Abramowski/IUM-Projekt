@@ -15,4 +15,4 @@ def load_model(name) -> Pipeline:
 
 dummy_model = load_model("dummy")
 base_model = load_model("base")
-advanced_model = load_model("forest")
+advanced_model = load_model("forest_after_log")

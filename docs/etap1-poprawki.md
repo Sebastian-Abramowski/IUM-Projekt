@@ -60,10 +60,14 @@ Wyniki modelu zaawansowanego na zbiorze testowym po lekkich transformacjach dany
 - MAE: `1841.32`
 - RMSE: `3379.44`
 
+Wyniki modelu zawanasowanego na zbiorze testowym po lekkich transformacjach danych, dobraniu hiperparamertów oraz po logarytmowaniu zmiennej celu w środku modelu:
+
+- MAE: `1434.55`
+- RMSE: `2455.00`
+
 Wnioski:
 
-Choć model zaawansowany rzeczywiście poprawia predykcję względem modelu bazowego, to błędy nadal są zbyt duże, by mówić o praktycznej użyteczności.
-Albo dane są niewystarczające, żeby uzyskać model wyraźnie lepszy od modelu bazowego, albo my jesteśmy bezużyteczni w naszych próbach.
+Mimo że udało nam się poprawić wyniki dzięki zastosowaniu modelu zaawansowanego, to błąd nadal pozostaje na tyle duży, że trudno mówić o praktycznym zastosowaniu tych predykcji. Może to kwestia ograniczonych danych, a może po prostu nie potrafiliśmy jeszcze wycisnąć z nich tyle, ile by się chciało.
 
 ---
 

@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from uuid import UUID
 
 
 class GetPredictionRequest(BaseModel):
@@ -12,3 +13,8 @@ class GetPredictionRequest(BaseModel):
     room_type: str
     property_type: str
     neighbourhood_cleaned: str
+
+
+class SetFinalPriceRequest(BaseModel):
+    prediction_uuid: UUID
+    final_price: float
