@@ -29,11 +29,17 @@ Zasymulowaliśmy przeprowadzanie eksperymentu A/B przy użyciu `Postmana` w nast
 
 <img src="./figures/ab/GET_prediction.png" alt="get_prediction" width="500"/>
 
+</br>
+
 2. Wysłanie żądania, aby ustawić ostateczną cenę, podając identyfikator wcześniej uzyskanej predykcji,
 
 <img src="./figures/ab/POST_set_price.png" alt="set_price" width="500"/>
 
+</br>
+
 3. Powrót do kroku 1, jeśli potrzebujemy zebrać więcej danych,
+
+</br>
 
 4. Wysłanie żądania, aby uzyskać podsumowanie eksperymentu A/B.
 
@@ -60,8 +66,8 @@ Przykład danych:
 
 - tabela `Predicton`
 
-<img src="./figures/ab/prediction_table_example.png" alt="prediction_data_example" width="500"/>
+![prediction_data_example](./figures/ab/prediction_table_example.png)
 
 - tabela `Decision`
 
-<img src="./figures/ab/decision_table_example.png" alt="decision_data_example" width="500"/>
+![decision_data_example](./figures/ab/decision_table_example.png)
