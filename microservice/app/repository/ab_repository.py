@@ -1,4 +1,4 @@
-from sqlalchemy import func
+import pandas as pd
 
 from app.exceptions import EntityNotFoundException
 from app.models import Decision, Prediction
@@ -46,26 +46,35 @@ class AbRepository:
                 "summary": [],
             }
 
-        grouped_stats = (
+        rows = (
             self.db.query(
                 Prediction.model_type,
-                func.count(Prediction.uuid),
-                func.avg(func.abs(Decision.final_price - Prediction.prediction) / Prediction.prediction * 100),
+                Prediction.prediction,
+                Decision.final_price,
             )
             .join(Decision, Decision.prediction_uuid == Prediction.uuid)
-            .group_by(Prediction.model_type)
             .all()
         )
 
+        df = pd.DataFrame(rows, columns=["model_type", "prediction", "final_price"])
+        df["percent_change"] = abs(df["final_price"] - df["prediction"]) / df["prediction"] * 100
+
+        grouped = df.groupby("model_type")["percent_change"]
+
         summaries = []
-        for model_type, model_usage_count, avg_percent_change in grouped_stats:
-            selection_ratio = round(model_usage_count / total_decisions, 2)
+        for model_type, group in grouped:
+            usage_count = len(group)
+            selection_ratio = round(usage_count / total_decisions, 2)
+            avg_percent_change = round(group.mean(), 2)
+            median_percent_change = round(group.median(), 2)
+
             summaries.append(
                 {
                     "model_type": model_type,
                     "selection_ratio": selection_ratio,
-                    "usage_count": model_usage_count,
-                    "avg_percent_change": round(avg_percent_change, 2),
+                    "usage_count": usage_count,
+                    "avg_percent_change": avg_percent_change,
+                    "median_percent_change": median_percent_change,
                 }
             )
 

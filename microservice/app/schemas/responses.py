@@ -18,6 +18,7 @@ class ModelSummary(BaseModel):
     selection_ratio: float
     usage_count: int
     avg_percent_change: float
+    median_percent_change: float
 
 
 class AbSummaryResponse(BaseModel):

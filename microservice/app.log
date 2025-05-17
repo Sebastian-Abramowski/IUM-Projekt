@@ -1,60 +1,3 @@
-2025-05-16 16:26:29 |INFO:	Received request for dummy prediction
-2025-05-16 16:26:35 |INFO:	Received request for linear regression prediction
-2025-05-16 18:01:55 | INFO:	Received request for linear regression prediction
-2025-05-16 18:03:16 | INFO:	Received request for linear regression prediction
-2025-05-16 18:03:47 | INFO:	Received request for random forest prediction
-2025-05-16 18:07:06 | INFO:	Received request for dummy prediction
-2025-05-16 18:07:41 | INFO:	Received request for dummy prediction
-2025-05-16 18:07:47 | INFO:	Received request for dummy prediction
-2025-05-16 18:07:51 | INFO:	Received request for dummy prediction
-2025-05-16 18:15:48 | INFO:	Received request for linear regression prediction
-2025-05-16 18:15:52 | INFO:	Received request for dummy prediction
-2025-05-16 18:15:54 | INFO:	Received request for random forest prediction
-2025-05-16 18:16:02 | INFO:	Received request for linear regression prediction
-2025-05-16 18:16:14 | INFO:	Received request for linear regression prediction
-2025-05-16 18:16:27 | INFO:	Received request for random forest prediction
-2025-05-16 18:16:47 | INFO:	Received request for random forest prediction
-2025-05-16 18:17:04 | INFO:	Received request for random forest prediction
-2025-05-16 18:17:20 | INFO:	Received request for random forest prediction
-2025-05-16 18:17:30 | INFO:	Received request for random forest prediction
-2025-05-16 18:17:48 | INFO:	Received request for random forest prediction
-2025-05-16 18:18:38 | INFO:	Received request for random forest prediction
-2025-05-16 18:20:58 | INFO:	Received request for random forest prediction
-2025-05-16 18:25:37 | INFO:	Received request for random forest prediction
-2025-05-16 18:25:38 | INFO:	Received request for random forest prediction
-2025-05-16 19:35:34 | INFO:	Received request for random forest prediction
-2025-05-16 19:37:26 | INFO:	Received request for random forest prediction
-2025-05-16 19:38:51 | INFO:	Received request for random forest prediction
-2025-05-16 19:39:06 | INFO:	Received request for random forest prediction
-2025-05-16 19:44:16 | INFO:	Received request for dummy prediction
-2025-05-16 19:44:22 | INFO:	Received request for dummy prediction
-2025-05-16 19:44:24 | INFO:	Received request for dummy prediction
-2025-05-16 19:44:31 | INFO:	Received request for linear regression prediction
-2025-05-16 19:45:07 | INFO:	Received request for linear regression prediction
-2025-05-16 19:45:28 | INFO:	Received request for linear regression prediction
-2025-05-16 20:01:15 | INFO:	Received request for dummy prediction
-2025-05-16 20:01:18 | INFO:	Received request for random forest prediction
-2025-05-16 20:01:21 | INFO:	Received request for linear regression prediction
-2025-05-16 23:59:26 | INFO:	Received request for ab prediction
-2025-05-17 00:01:01 | INFO:	Received request for ab prediction
-2025-05-17 00:18:07 | INFO:	Received request for linear regression prediction
-2025-05-17 00:18:13 | INFO:	Received request for random forest prediction
-2025-05-17 00:19:16 | INFO:	Received request for dummy prediction
-2025-05-17 00:19:59 | INFO:	Received request for ab prediction
-2025-05-17 00:22:27 | INFO:	Received request for ab prediction
-2025-05-17 00:22:31 | INFO:	Received request for ab prediction
-2025-05-17 00:22:38 | INFO:	Received request for ab prediction
-2025-05-17 00:22:41 | INFO:	Received request for ab prediction
-2025-05-17 00:39:58 | INFO:	Received request for ab prediction
-2025-05-17 00:40:05 | INFO:	Received request for ab prediction
-2025-05-17 00:40:08 | INFO:	Received request for ab prediction
-2025-05-17 00:40:11 | INFO:	Received request for ab prediction
-2025-05-17 00:40:14 | INFO:	Received request for ab prediction
-2025-05-17 00:40:18 | INFO:	Received request for ab prediction
-2025-05-17 00:41:58 | INFO:	Received request for ab prediction
-2025-05-17 00:42:02 | INFO:	Received request for ab prediction
-2025-05-17 01:03:33 | INFO:	Received request to set final price 3500.0
-2025-05-17 01:04:34 | INFO:	Received request to set final price 3500.0
 2025-05-17 01:39:52 | INFO:	Received request for ab prediction
 2025-05-17 01:39:52 | INFO:	Responded with prediction 3493.625064484341 using model RANDOM_FOREST
 2025-05-17 01:40:05 | INFO:	Received request to set final price 2000.0
@@ -109,3 +52,181 @@
 2025-05-17 02:34:11 | INFO:	Responded with prediction 3493.63 using model RANDOM_FOREST
 2025-05-17 02:34:22 | INFO:	Received request to set final price 3678.0
 2025-05-17 02:34:24 | INFO:	Received request to get summary
+2025-05-17 15:39:45 | INFO:	Received request for ab prediction
+2025-05-17 15:39:45 | INFO:	Responded with prediction 2404.06 using model RANDOM_FOREST
+2025-05-17 15:39:58 | INFO:	Received request to set final price 2789.0
+2025-05-17 15:40:01 | INFO:	Received request for ab prediction
+2025-05-17 15:40:01 | INFO:	Responded with prediction 2404.06 using model RANDOM_FOREST
+2025-05-17 15:40:43 | INFO:	Received request for ab prediction
+2025-05-17 15:40:43 | INFO:	Responded with prediction 2256.71 using model LINEAR_REGRESSION
+2025-05-17 15:41:02 | INFO:	Received request to set final price 2999.0
+2025-05-17 15:41:15 | INFO:	Received request for ab prediction
+2025-05-17 15:41:15 | INFO:	Responded with prediction 4190.26 using model LINEAR_REGRESSION
+2025-05-17 15:41:27 | INFO:	Received request to set final price 4500.0
+2025-05-17 15:41:30 | INFO:	Received request for ab prediction
+2025-05-17 15:41:30 | INFO:	Responded with prediction 4190.26 using model LINEAR_REGRESSION
+2025-05-17 15:41:51 | INFO:	Received request for ab prediction
+2025-05-17 15:41:51 | INFO:	Responded with prediction 7466.84 using model LINEAR_REGRESSION
+2025-05-17 15:42:05 | INFO:	Received request to set final price 6050.0
+2025-05-17 15:43:06 | INFO:	Received request for ab prediction
+2025-05-17 15:43:06 | INFO:	Responded with prediction 1294.38 using model RANDOM_FOREST
+2025-05-17 15:43:17 | INFO:	Received request to set final price 1450.0
+2025-05-17 15:43:20 | INFO:	Received request for ab prediction
+2025-05-17 15:43:20 | INFO:	Responded with prediction 1901.34 using model LINEAR_REGRESSION
+2025-05-17 15:43:31 | INFO:	Received request to set final price 1450.0
+2025-05-17 15:43:49 | INFO:	Received request for ab prediction
+2025-05-17 15:43:49 | INFO:	Responded with prediction 2902.77 using model RANDOM_FOREST
+2025-05-17 15:43:59 | INFO:	Received request to set final price 3050.0
+2025-05-17 15:44:03 | INFO:	Received request to get summary
+2025-05-17 15:44:17 | INFO:	Received request for ab prediction
+2025-05-17 15:44:17 | INFO:	Responded with prediction 2902.77 using model RANDOM_FOREST
+2025-05-17 15:45:01 | INFO:	Received request for ab prediction
+2025-05-17 15:45:01 | INFO:	Responded with prediction 6511.09 using model LINEAR_REGRESSION
+2025-05-17 15:45:12 | INFO:	Received request to set final price 7020.0
+2025-05-17 15:45:26 | INFO:	Received request for ab prediction
+2025-05-17 15:45:26 | INFO:	Responded with prediction 16320.33 using model LINEAR_REGRESSION
+2025-05-17 15:45:46 | INFO:	Received request to set final price 8050.0
+2025-05-17 15:45:48 | INFO:	Received request to get summary
+2025-05-17 15:46:23 | INFO:	Received request for ab prediction
+2025-05-17 15:46:23 | INFO:	Responded with prediction 1515.88 using model LINEAR_REGRESSION
+2025-05-17 15:46:36 | INFO:	Received request to set final price 2065.0
+2025-05-17 15:46:39 | INFO:	Received request for ab prediction
+2025-05-17 15:46:39 | INFO:	Responded with prediction 1515.88 using model LINEAR_REGRESSION
+2025-05-17 15:46:51 | INFO:	Received request for ab prediction
+2025-05-17 15:46:51 | INFO:	Responded with prediction 4307.99 using model LINEAR_REGRESSION
+2025-05-17 15:47:04 | INFO:	Received request to set final price 3077.0
+2025-05-17 15:47:34 | INFO:	Received request for ab prediction
+2025-05-17 15:47:34 | INFO:	Responded with prediction 891.52 using model LINEAR_REGRESSION
+2025-05-17 15:47:43 | INFO:	Received request to set final price 350.0
+2025-05-17 15:48:09 | INFO:	Received request for ab prediction
+2025-05-17 15:48:09 | INFO:	Responded with prediction 2604.49 using model RANDOM_FOREST
+2025-05-17 15:48:20 | INFO:	Received request to set final price 3067.0
+2025-05-17 15:48:32 | INFO:	Received request for ab prediction
+2025-05-17 15:48:32 | INFO:	Responded with prediction 3869.38 using model LINEAR_REGRESSION
+2025-05-17 15:48:44 | INFO:	Received request to set final price 2079.0
+2025-05-17 15:49:24 | INFO:	Received request for ab prediction
+2025-05-17 15:49:24 | INFO:	Responded with prediction 2877.56 using model RANDOM_FOREST
+2025-05-17 15:49:33 | INFO:	Received request to set final price 1570.0
+2025-05-17 15:50:18 | INFO:	Received request for ab prediction
+2025-05-17 15:50:18 | INFO:	Responded with prediction 11932.34 using model LINEAR_REGRESSION
+2025-05-17 15:50:34 | INFO:	Received request to set final price 7002.0
+2025-05-17 15:50:46 | INFO:	Received request for ab prediction
+2025-05-17 15:50:46 | INFO:	Responded with prediction 7085.45 using model LINEAR_REGRESSION
+2025-05-17 15:50:55 | INFO:	Received request to set final price 4042.0
+2025-05-17 15:51:06 | INFO:	Received request for ab prediction
+2025-05-17 15:51:06 | INFO:	Responded with prediction -194.53 using model LINEAR_REGRESSION
+2025-05-17 15:51:31 | INFO:	Received request to set final price 2040.0
+2025-05-17 15:52:07 | INFO:	Received request for ab prediction
+2025-05-17 15:52:07 | INFO:	Responded with prediction 7929.68 using model LINEAR_REGRESSION
+2025-05-17 15:52:19 | INFO:	Received request to set final price 4090.0
+2025-05-17 15:52:54 | INFO:	Received request for ab prediction
+2025-05-17 15:52:54 | INFO:	Responded with prediction 19243.75 using model LINEAR_REGRESSION
+2025-05-17 15:53:08 | INFO:	Received request to set final price 6080.0
+2025-05-17 15:53:23 | INFO:	Received request for ab prediction
+2025-05-17 15:53:23 | INFO:	Responded with prediction 2182.80 using model RANDOM_FOREST
+2025-05-17 15:53:32 | INFO:	Received request to set final price 1020.0
+2025-05-17 15:54:29 | INFO:	Received request for ab prediction
+2025-05-17 15:54:29 | INFO:	Responded with prediction 5354.16 using model RANDOM_FOREST
+2025-05-17 15:54:52 | INFO:	Received request to set final price 3078.0
+2025-05-17 15:54:54 | INFO:	Received request to get summary
+2025-05-17 15:55:27 | INFO:	Received request for ab prediction
+2025-05-17 15:55:27 | INFO:	Responded with prediction 1279.17 using model RANDOM_FOREST
+2025-05-17 15:55:38 | INFO:	Received request to set final price 1300.0
+2025-05-17 15:55:53 | INFO:	Received request for ab prediction
+2025-05-17 15:55:53 | INFO:	Responded with prediction 7679.37 using model LINEAR_REGRESSION
+2025-05-17 15:56:07 | INFO:	Received request to set final price 15000.0
+2025-05-17 15:56:09 | INFO:	Received request to get summary
+2025-05-17 15:56:19 | INFO:	Received request for ab prediction
+2025-05-17 15:56:19 | INFO:	Responded with prediction 7679.37 using model LINEAR_REGRESSION
+2025-05-17 15:56:36 | INFO:	Received request for ab prediction
+2025-05-17 15:56:36 | INFO:	Responded with prediction 8698.35 using model LINEAR_REGRESSION
+2025-05-17 15:56:46 | INFO:	Received request to set final price 8900.0
+2025-05-17 15:56:55 | INFO:	Received request for ab prediction
+2025-05-17 15:56:55 | INFO:	Responded with prediction 4950.48 using model LINEAR_REGRESSION
+2025-05-17 15:57:06 | INFO:	Received request to set final price 5000.0
+2025-05-17 15:57:21 | INFO:	Received request for ab prediction
+2025-05-17 15:57:21 | INFO:	Responded with prediction 3608.15 using model RANDOM_FOREST
+2025-05-17 15:57:32 | INFO:	Received request to set final price 8900.0
+2025-05-17 15:57:34 | INFO:	Received request to get summary
+2025-05-17 15:57:47 | INFO:	Received request for ab prediction
+2025-05-17 15:57:47 | INFO:	Responded with prediction 1259.06 using model LINEAR_REGRESSION
+2025-05-17 15:57:58 | INFO:	Received request to set final price 12000.0
+2025-05-17 15:58:00 | INFO:	Received request to get summary
+2025-05-17 15:58:21 | INFO:	Received request for ab prediction
+2025-05-17 15:58:21 | INFO:	Responded with prediction 2308.63 using model RANDOM_FOREST
+2025-05-17 15:58:32 | INFO:	Received request to set final price 2500.0
+2025-05-17 15:58:44 | INFO:	Received request for ab prediction
+2025-05-17 15:58:44 | INFO:	Responded with prediction 3558.86 using model RANDOM_FOREST
+2025-05-17 15:58:54 | INFO:	Received request to set final price 3200.0
+2025-05-17 15:59:04 | INFO:	Received request for ab prediction
+2025-05-17 15:59:04 | INFO:	Responded with prediction 10988.48 using model LINEAR_REGRESSION
+2025-05-17 15:59:13 | INFO:	Received request to set final price 8888.0
+2025-05-17 15:59:23 | INFO:	Received request for ab prediction
+2025-05-17 15:59:23 | INFO:	Responded with prediction 12970.70 using model LINEAR_REGRESSION
+2025-05-17 15:59:31 | INFO:	Received request to set final price 8888.0
+2025-05-17 15:59:45 | INFO:	Received request for ab prediction
+2025-05-17 15:59:45 | INFO:	Responded with prediction 7575.72 using model LINEAR_REGRESSION
+2025-05-17 15:59:56 | INFO:	Received request to set final price 6000.0
+2025-05-17 16:00:01 | INFO:	Received request for ab prediction
+2025-05-17 16:00:01 | INFO:	Responded with prediction 3574.38 using model RANDOM_FOREST
+2025-05-17 16:00:15 | INFO:	Received request to set final price 4079.0
+2025-05-17 16:00:34 | INFO:	Received request for ab prediction
+2025-05-17 16:00:34 | INFO:	Responded with prediction 3288.45 using model RANDOM_FOREST
+2025-05-17 16:00:45 | INFO:	Received request to set final price 2050.0
+2025-05-17 16:00:47 | INFO:	Received request to get summary
+2025-05-17 16:01:12 | INFO:	Received request for ab prediction
+2025-05-17 16:01:12 | INFO:	Responded with prediction 4621.94 using model LINEAR_REGRESSION
+2025-05-17 16:01:24 | INFO:	Received request to set final price 3600.0
+2025-05-17 16:01:26 | INFO:	Received request for ab prediction
+2025-05-17 16:01:26 | INFO:	Responded with prediction 4621.94 using model LINEAR_REGRESSION
+2025-05-17 16:01:47 | INFO:	Received request for ab prediction
+2025-05-17 16:01:48 | INFO:	Responded with prediction 3517.05 using model LINEAR_REGRESSION
+2025-05-17 16:01:58 | INFO:	Received request to set final price 3700.0
+2025-05-17 16:02:28 | INFO:	Received request for ab prediction
+2025-05-17 16:02:28 | INFO:	Responded with prediction 2986.73 using model RANDOM_FOREST
+2025-05-17 16:02:37 | INFO:	Received request to set final price 2900.0
+2025-05-17 16:02:50 | INFO:	Received request for ab prediction
+2025-05-17 16:02:50 | INFO:	Responded with prediction 3466.58 using model RANDOM_FOREST
+2025-05-17 16:03:03 | INFO:	Received request to set final price 3000.0
+2025-05-17 16:03:15 | INFO:	Received request for ab prediction
+2025-05-17 16:03:15 | INFO:	Responded with prediction 4148.28 using model RANDOM_FOREST
+2025-05-17 16:03:23 | INFO:	Received request to set final price 3000.0
+2025-05-17 16:03:27 | INFO:	Received request for ab prediction
+2025-05-17 16:03:27 | INFO:	Responded with prediction 3171.42 using model RANDOM_FOREST
+2025-05-17 16:03:36 | INFO:	Received request to set final price 2500.0
+2025-05-17 16:03:38 | INFO:	Received request to get summary
+2025-05-17 16:05:24 | INFO:	Received request for ab prediction
+2025-05-17 16:05:24 | INFO:	Responded with prediction 3503.77 using model RANDOM_FOREST
+2025-05-17 16:05:34 | INFO:	Received request to set final price 3750.0
+2025-05-17 16:05:36 | INFO:	Received request for ab prediction
+2025-05-17 16:05:36 | INFO:	Responded with prediction 3503.77 using model RANDOM_FOREST
+2025-05-17 16:05:48 | INFO:	Received request for ab prediction
+2025-05-17 16:05:48 | INFO:	Responded with prediction 3586.08 using model RANDOM_FOREST
+2025-05-17 16:05:58 | INFO:	Received request to set final price 4030.0
+2025-05-17 16:06:06 | INFO:	Received request for ab prediction
+2025-05-17 16:06:06 | INFO:	Responded with prediction 3928.46 using model RANDOM_FOREST
+2025-05-17 16:06:12 | INFO:	Received request to set final price 4030.0
+2025-05-17 16:06:31 | INFO:	Received request for ab prediction
+2025-05-17 16:06:31 | INFO:	Responded with prediction 3791.49 using model RANDOM_FOREST
+2025-05-17 16:06:37 | INFO:	Received request to set final price 4030.0
+2025-05-17 16:06:42 | INFO:	Received request for ab prediction
+2025-05-17 16:06:42 | INFO:	Responded with prediction 6577.24 using model LINEAR_REGRESSION
+2025-05-17 16:06:51 | INFO:	Received request for ab prediction
+2025-05-17 16:06:51 | INFO:	Responded with prediction 6447.43 using model LINEAR_REGRESSION
+2025-05-17 16:07:04 | INFO:	Received request to set final price 3500.0
+2025-05-17 16:07:17 | INFO:	Received request for ab prediction
+2025-05-17 16:07:17 | INFO:	Responded with prediction 6180.68 using model LINEAR_REGRESSION
+2025-05-17 16:07:44 | INFO:	Received request for ab prediction
+2025-05-17 16:07:44 | INFO:	Responded with prediction 2408.64 using model RANDOM_FOREST
+2025-05-17 16:07:54 | INFO:	Received request to set final price 2050.0
+2025-05-17 16:08:01 | INFO:	Received request for ab prediction
+2025-05-17 16:08:01 | INFO:	Responded with prediction 2465.36 using model RANDOM_FOREST
+2025-05-17 16:08:09 | INFO:	Received request to set final price 2050.0
+2025-05-17 16:08:26 | INFO:	Received request for ab prediction
+2025-05-17 16:08:26 | INFO:	Responded with prediction 1160.26 using model LINEAR_REGRESSION
+2025-05-17 16:08:36 | INFO:	Received request to set final price 2760.0
+2025-05-17 16:08:38 | INFO:	Received request to get summary
+2025-05-17 16:41:18 | INFO:	Received request to get summary
+2025-05-17 16:42:48 | INFO:	Received request to get summary
+2025-05-17 17:29:24 | INFO:	Received request to get summary
+2025-05-17 17:29:55 | INFO:	Received request to get summary

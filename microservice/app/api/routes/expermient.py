@@ -49,7 +49,7 @@ def set_final_price(request: SetFinalPriceRequest, ab_repository: AbRepositoryDe
     ab_repository.save_decision(prediction_uuid=request.prediction_uuid, final_price=request.final_price)
 
 
-@router.post("/clean", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/clean/all", status_code=status.HTTP_204_NO_CONTENT)
 def clean_results(ab_repository: AbRepositoryDependency):
     logger.info("Received request to clean experiment results")
 
