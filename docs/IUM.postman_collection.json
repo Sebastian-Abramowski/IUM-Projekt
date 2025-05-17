@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "8e5d6061-a7a9-4c98-96e5-c38336e4dce3",
+		"name": "IUM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36862724"
+	},
+	"item": [
+		{
+			"name": "Predictions",
+			"item": [
+				{
+					"name": "Linear regression model",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accommodates\": 2,\r\n  \"min_nights\": 1,\r\n  \"bedrooms\": 2,\r\n  \"beds\": 2,\r\n  \"bathrooms\": 1.0,\r\n  \"room_type\": \"Private room\",\r\n  \"property_type\": \"Entire rental unit\",\r\n  \"neighbourhood_cleaned\": \"Silivri\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/prediction/linear_regression",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prediction",
+								"linear_regression"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Random forest regression model",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accommodates\": 2,\r\n  \"min_nights\": 1,\r\n  \"bedrooms\": 1,\r\n  \"beds\": 1,\r\n  \"bathrooms\": 1,\r\n  \"room_type\": \"Entire home/apt\",\r\n  \"property_type\": \"Entire rental unit\",\r\n  \"neighbourhood_cleaned\": \"Kadikoy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/prediction/random_forest",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prediction",
+								"random_forest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dummy model",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accommodates\": 2,\r\n  \"min_nights\": 1,\r\n  \"bedrooms\": 2,\r\n  \"beds\": 2,\r\n  \"bathrooms\": 1.0,\r\n  \"room_type\": \"Private room\",\r\n  \"property_type\": \"Entire rental unit\",\r\n  \"neighbourhood_cleaned\": \"Silivri\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/prediction/dummy",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prediction",
+								"dummy"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Experiment",
+			"item": [
+				{
+					"name": "Get prediction",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accommodates\": 1,\r\n  \"min_nights\": 1,\r\n  \"bedrooms\":1,\r\n  \"beds\": 1,\r\n  \"bathrooms\": 1,\r\n  \"room_type\": \"Private room\",\r\n  \"property_type\": \"Private room in rental unit\",\r\n  \"neighbourhood_cleaned\": \"Atasehir\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/experiment/predict",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"experiment",
+								"predict"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set final price",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prediction_uuid\": \"f4040d90-91e6-4a30-9eb6-0b78c65457a3\",\r\n    \"final_price\": 2760\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/experiment/set_final_price",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"experiment",
+								"set_final_price"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clean results",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clean/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clean",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/experiment/summary",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"experiment",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:7777",
+			"type": "string"
+		}
+	]
+}

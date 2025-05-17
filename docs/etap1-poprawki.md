@@ -157,47 +157,47 @@ Zmienna bathrooms przyjmuje wartości od 0 do 25 (też **niecałkowite** - co wy
 
 #### Zmienna accommodates
 
-<img src="./figures/accommodates_values.png" alt="bathrooms" width="500"/>
+<img src="./figures/accommodates_values.png" alt="accomodates" width="500"/>
 
 Zmienna accommodates przyjmuje wartośći całkowite od 1 do 16. Wartości większe niż 10 nie są pokazane na wykresie, ale są to znacznie rzadsze przypadki.
 
 #### Zmienna bedrooms
 
-<img src="./figures/bedrooms_values.png" alt="bathrooms" width="500"/>
+<img src="./figures/bedrooms_values.png" alt="bedrooms" width="500"/>
 
 Zmienna bedrooms przyjmuje wartości całkowite od 0 do 49. Wartości większe niz 8 są bardzo rzadkie i nie są pokazane na wykresie.
 
 #### Zmienna beds
 
-<img src="./figures/beds_values.png" alt="bathrooms" width="500"/>
+<img src="./figures/beds_values.png" alt="beds" width="500"/>
 
 Zmienna beds przyjmuje wartości całkowite od 0 do 50. Wartości większe niż 10 są bardzo rzadkie i nie są pokazane na wykresie.
 
 #### Zmienna room_type
 
-<img src="./figures/room_type_values.png" alt="bathrooms" width="500"/>
+<img src="./figures/room_type_values.png" alt="room_type" width="500"/>
 
 Zmienna room_type przyjmuje tylko 4 wartości pokazane na wykresie.
 
 #### Zmienna property_type
 
-<img src="./figures/property_type_values.png" alt="bathrooms" width="500"/>
+<img src="./figures/property_type_values.png" alt="property_type" width="500"/>
 
 Zmienna property_type przyjmuje 58 unikalnych wartości. Większość z nich pojawia się rzadko i nie są pokazane na wykresie.
 
 #### Zmienna maxiumum_nights
 
-<img src="./figures/maximum_nights_values.png" alt="bathrooms" width="500"/>
+<img src="./figures/maximum_nights_values.png" alt="max_nights" width="500"/>
 
-<img src="./figures/maximum_nights_zoomed.png" alt="bathrooms" width="500"/>
+<img src="./figures/maximum_nights_zoomed.png" alt="max_nights" width="500"/>
 
 Zerowa maksymalna liczban nocy nie wydaje się być sensowna. Chyba, że jest to taka blokada na rezerwowanie lokalu.
 
 #### Zmienna minimum_nights
 
-<img src="./figures/minimum_nights_values.png" alt="bathrooms" width="500"/>
+<img src="./figures/minimum_nights_values.png" alt="min_nights" width="500"/>
 
-<img src="./figures/minimum_nights_zoomed.png" alt="bathrooms" width="500"/>
+<img src="./figures/minimum_nights_zoomed.png" alt="min_nights" width="500"/>
 
 Wartości większe niż 101 są bardzo rzadkie i nie są pokazane na wykresie. Dziwne trochę, że najczęciej występujaca liczba minimalnych nocy to 100 (czyli prawdopodobnie to są długoterminowe oferty).
 
@@ -205,21 +205,21 @@ Wartości większe niż 101 są bardzo rzadkie i nie są pokazane na wykresie. D
 
 Zawiera 39 dzielnic Stambułu.
 
-<img src="./figures/neighbourhood_cleaned_values.png" alt="bathrooms" width="500"/>
+<img src="./figures/neighbourhood_cleaned_values.png" alt="neighbourhood" width="500"/>
 
 Jak wygląda sytuacja z cenami w poszczególnych dzielnicach?
 
-<img src="./figures/neighbourhood_cleaned_median_values.png" alt="bathrooms" width="500"/>
+<img src="./figures/neighbourhood_cleaned_median_values.png" alt="neighbourhood" width="500"/>
 
-<img src="./figures/neighbourhood_cleaned_median_values_most_popular.png" alt="bathrooms" width="500"/>
+<img src="./figures/neighbourhood_cleaned_median_values_most_popular.png" alt="neighbourhood" width="500"/>
 
 #### Zmienna celu price
 
-<img src="./figures/price.png" alt="bathrooms" width="500"/>
+<img src="./figures/price.png" alt="price" width="500"/>
 
 #### Statystyki opisowe
 
-<img src="./figures/describes.png" alt="bathrooms" width="500"/>
+<img src="./figures/describes.png" alt="describes" width="500"/>
 
 Zmienna price tak jak wcześniej już wspominaliśmy nas niepokoi. Nie dość że ma dziwnie duże wartości, to jeszcze niektóre z nich są skrajnie duże oraz ogólnie różnice między wartoścami są spore. Pokazuje to, że są potencjalne problemy ze zmienną price.
 
@@ -229,13 +229,13 @@ Poniżej pokazujemy pewne zależności w danych, które nas zaniepokoiły w pier
 
 </br>
 
-<img src="./figures/beds_and_bedrooms.png" alt="bathrooms" width="500"/>
+<img src="./figures/beds_and_bedrooms.png" alt="beds_and_bedrooms" width="500"/>
 
 Widać potencjalne problemy, gdy liczba łóżek jest mniejsza niż liczba sypialni oraz, gdy przy zerowej liczbie sypialni mamy niezerową liczbę łóżek.
 
 </br>
 
-<img src="./figures/accomodates_and_beds.png" alt="bathrooms" width="500"/>
+<img src="./figures/accomodates_and_beds.png" alt="accomodates_and_beds" width="500"/>
 
 Widać potencjalne problemy, gdy liczba możliwych osób jest mniejsza od liczby łóżek oraz, gdy przy zerowej liczbie łóżek mamy niezerową liczbę osób, które mogą się zmieścić w lokalu.
 
@@ -257,11 +257,11 @@ We wszystkich dostępnych plikach występuje sporo braków w danych.
 
 W pliku `listings.txt`, który dla nas jest najważniejszy, tak wyglądają braki w danych:
 
-<img src="./figures/listings_nulls.png" alt="bathrooms" width="500"/>
+<img src="./figures/listings_nulls.png" alt="listing_nulls" width="500"/>
 
 We wszystkich nas interesujących kolumnach występują braki na poziomie większym niż 15%.
 
-<img src="./figures/interesting_data_nulls.png" alt="bathrooms" width="500"/>
+<img src="./figures/interesting_data_nulls.png" alt="interesting_data_nulls" width="500"/>
 
 ### Zależność między zmiennymi wejściowymi a zmienną celu
 
@@ -273,13 +273,13 @@ Uwaga:
 
 W przypadku zmiennej ciągłej price oraz dyskretnych wartości liczbowych do mierzenia kolelacji użyliśmy `korelacji Spearmana`.
 
-<img src="./figures/corr_spearman.png" alt="bathrooms" width="500"/>
+<img src="./figures/corr_spearman.png" alt="corr_spearman" width="500"/>
 
 ---
 
 W przypadku zmiennej ciągłej price oraz kategorycznych zmiennych wejściowych podzieliliśmy zmienną celu na 20 przedziałów. Dzięki temu obie zmienne przyjmują wartości dyskretne, co pozwala na zastosowanie `współczynnika informacji wzajemnej`.
 
-<img src="./figures/corr_mutual_info_score.png" alt="bathrooms" width="500"/>
+<img src="./figures/corr_mutual_info_score.png" alt="corr_mutual_info" width="500"/>
 
 </br>
 
