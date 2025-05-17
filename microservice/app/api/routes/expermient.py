@@ -8,7 +8,7 @@ from loguru import logger
 from app.api.dependencies import AbRepositoryDependency
 from app.config.predicators import advanced_model, base_model
 from app.models import ModelName
-from app.schemas import GetPredictionRequest, PredictionResponse, SetFinalPriceRequest
+from app.schemas import AbSummaryResponse, GetPredictionRequest, PredictionResponse, SetFinalPriceRequest
 
 router = APIRouter(prefix="/experiment", tags=["experiment"])
 
@@ -34,6 +34,8 @@ def get_ab_prediction(request: GetPredictionRequest, ab_repository: AbRepository
         predicted_price=predicted_price,
     )
 
+    logger.info(f"Responded with prediction {predicted_price:.2f} using model {selected_model}")
+
     return PredictionResponse(
         predicted_price=predicted_price,
         prediction_uuid=prediction.uuid,
@@ -45,3 +47,20 @@ def set_final_price(request: SetFinalPriceRequest, ab_repository: AbRepositoryDe
     logger.info(f"Received request to set final price {request.final_price}")
 
     ab_repository.save_decision(prediction_uuid=request.prediction_uuid, final_price=request.final_price)
+
+
+@router.post("/clean", status_code=status.HTTP_204_NO_CONTENT)
+def clean_results(ab_repository: AbRepositoryDependency):
+    logger.info("Received request to clean experiment results")
+
+    open("app.log", "w").close()
+    ab_repository.clear_all()
+
+    logger.info("Experiment results cleaned")
+
+
+@router.get("/summary", response_model=AbSummaryResponse)
+def get_summary(ab_repository: AbRepositoryDependency):
+    logger.info("Received request to get summary")
+
+    return ab_repository.get_summary()

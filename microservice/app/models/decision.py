@@ -10,6 +10,6 @@ class Decision(Base):
     __tablename__ = "decision"
 
     uuid = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    prediction_uuid = Column(UUID(as_uuid=True), ForeignKey("prediction.uuid"), nullable=False)
+    prediction_uuid = Column(UUID(as_uuid=True), ForeignKey("prediction.uuid"), nullable=False, unique=True)
     final_price = Column(Float, nullable=False)
     timestamp = Column(DateTime(), nullable=False, server_default=func.now())
