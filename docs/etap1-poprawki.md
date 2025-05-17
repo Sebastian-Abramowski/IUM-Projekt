@@ -32,8 +32,8 @@ Zastosowaliśmy model naiwny, który zawsze zwraca ten sam wynik. Zwraca on medi
 
 Wyniki modelu naiwnego na zbiorze testowym:
 
-- MAE: `2138.67`
-- RMSE: `4282.36`
+- MAE: `1869.46`
+- RMSE: `3472.63`
 
 ### Model bazowy
 
@@ -41,8 +41,8 @@ Zastosowaliśmy model bazowy, który jest modelem regresji liniowej. Dla zmienny
 
 Wyniki modelu bazowego na zbiorze testowym:
 
-- MAE: `2478.52`
-- RMSE: `4071.42`
+- MAE: `2405.73`
+- RMSE: `3299.12`
 
 ### Pierwsza wersja modelu zaawansowanego
 
@@ -52,18 +52,23 @@ DLa zmiennych kategorycznych zastosowaliśmy kodowanie one hot, a zmienne liczbo
 
 Wyniki modelu zaawansowanego na zbiorze testowym:
 
-- MAE: `1912.86`
-- RMSE: `3466.67`
+- MAE: `1710.93`
+- RMSE: `2672.90`
+
+Wyniki modelu zaawansowanego na zbiorze testowym po lekkich transformacjach danych:
+
+- MAE: `1660.18`
+- RMSE: `2649.37`
 
 Wyniki modelu zaawansowanego na zbiorze testowym po lekkich transformacjach danych i dobraniu hiperparametrów:
 
-- MAE: `1841.32`
-- RMSE: `3379.44`
+- MAE: `1627.11`
+- RMSE: `2605.14`
 
 Wyniki modelu zawanasowanego na zbiorze testowym po lekkich transformacjach danych, dobraniu hiperparamertów oraz po logarytmowaniu zmiennej celu w środku modelu:
 
-- MAE: `1434.55`
-- RMSE: `2455.00`
+- MAE: `1544.24`
+- RMSE: `2685.88`
 
 Wnioski:
 
