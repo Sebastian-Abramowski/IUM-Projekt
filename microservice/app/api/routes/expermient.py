@@ -5,7 +5,8 @@ import pandas as pd
 from fastapi import APIRouter, status
 from loguru import logger
 
-from app.api.dependencies import AbRepositoryDependency
+from app.ab import get_summary
+from app.api.dependencies import AbRepositoryDependency, DbDependency
 from app.config.predicators import advanced_model, base_model
 from app.models import ModelName
 from app.schemas import AbSummaryResponse, GetPredictionRequest, PredictionResponse, SetFinalPriceRequest
@@ -60,7 +61,7 @@ def clean_results(ab_repository: AbRepositoryDependency):
 
 
 @router.get("/summary", response_model=AbSummaryResponse)
-def get_summary(ab_repository: AbRepositoryDependency):
+def get_ab_summary(db: DbDependency):
     logger.info("Received request to get summary")
 
-    return ab_repository.get_summary()
+    return get_summary(db)
