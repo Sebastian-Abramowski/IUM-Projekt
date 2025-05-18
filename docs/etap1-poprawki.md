@@ -48,7 +48,7 @@ Wyniki modelu bazowego na zbiorze testowym:
 
 Z ciekawości przetestowaliśmy również pierwszą wersję bardziej zaawansowanego modelu, który powinien potrafić rozpoznać nieliniowe zależności - zastosowaliśmy regresję Random Forest.
 
-DLa zmiennych kategorycznych zastosowaliśmy kodowanie one hot, a zmienne liczbowe nie zostały przeskalowane.
+Dla zmiennych kategorycznych zastosowaliśmy kodowanie one hot, a zmienne liczbowe nie zostały przeskalowane.
 
 Wyniki modelu zaawansowanego na zbiorze testowym:
 
@@ -72,7 +72,7 @@ Wyniki modelu zawanasowanego na zbiorze testowym po lekkich transformacjach dany
 
 Wnioski:
 
-Mimo że udało nam się poprawić wyniki dzięki zastosowaniu modelu zaawansowanego, to błąd nadal pozostaje na tyle duży, że trudno mówić o praktycznym zastosowaniu tych predykcji. Może to kwestia ograniczonych danych, a może po prostu nie potrafiliśmy jeszcze wycisnąć z nich tyle, ile by się chciało.
+Mimo że udało nam się poprawić wyniki dzięki zastosowaniu modelu zaawansowanego, to błąd nadal pozostaje na tyle duży, że trudno mówić o praktycznym zastosowaniu tych predykcji. Może to kwestia danych o słabej jakości, a może po prostu nie potrafiliśmy jeszcze wycisnąć z nich tyle, ile by się chciało.
 
 ---
 
@@ -101,13 +101,13 @@ Poprawka:
 Jako metrykę oceny jakości predykcji przyjmujemy RMSE (Root Mean Squared Error),
 mierzy ona średni błąd predykcji i kładzie większy nacisk na duże odchylenia.
 
-`Za sukces analityczny uznajemy sytuację, w której model osiąga RMSE mniejsze niż model naiwny (4282.36) oraz model bazowy (4071.42)`.
+`Za sukces analityczny uznajemy sytuację, w której model osiąga RMSE mniejsze niż model naiwny (3472.63) oraz model bazowy (3299.12)`.
 
 #### Biznesowe kryterium sukcesu
 
 Biznesowe kryterium sukcesu opieramy na wyniku eksperymentu A/B, w którym użytkownicy będą losowo otrzymywać sugerowaną cenę z modelu bazowego lub modelu zaawansowanego.
 
-`Za sukces uznajemy sytuację, w której średnia zmiana ceny wprowadzana przez użytkowników po otrzymaniu sugestii z modelu zaawansowanego jest mniejsza niż w przypadku modelu bazowego, a także gdy średnia modyfikacja ceny nie przekracza 20% względem wartości zaproponowanej przez model zaawansowany`.
+`Za sukces uznajemy sytuację, w której średnia zmiana cen wprowadzanych przez użytkowników po otrzymaniu sugestii z modelu zaawansowanego jest mniejsza niż w przypadku modelu bazowego, a także gdy średnia modyfikacja ceny nie przekracza 20% względem wartości zaproponowanej przez model zaawansowany`.
 
 ---
 
@@ -119,7 +119,7 @@ Uwaga:
 
 Poprawka:
 
-Dane, które planujemy wykorzystać jako zeminne wejściowe (features) dla naszego modelu to:
+Dane, które planujemy wykorzystać jako zmienne wejściowe (features) dla naszego modelu to:
 
 - accommodates - liczba osób, które może pomieścić lokal
 
@@ -177,7 +177,7 @@ Zmienna beds przyjmuje wartości całkowite od 0 do 50. Wartości większe niż 
 
 <img src="./figures/room_type_values.png" alt="room_type" width="500"/>
 
-Zmienna room_type przyjmuje tylko 4 wartości pokazane na wykresie.
+Zmienna room_type przyjmuje 4 wartości pokazane na wykresie.
 
 #### Zmienna property_type
 
@@ -185,13 +185,13 @@ Zmienna room_type przyjmuje tylko 4 wartości pokazane na wykresie.
 
 Zmienna property_type przyjmuje 58 unikalnych wartości. Większość z nich pojawia się rzadko i nie są pokazane na wykresie.
 
-#### Zmienna maxiumum_nights
+#### Zmienna maximum_nights
 
 <img src="./figures/maximum_nights_values.png" alt="max_nights" width="500"/>
 
 <img src="./figures/maximum_nights_zoomed.png" alt="max_nights" width="500"/>
 
-Zerowa maksymalna liczban nocy nie wydaje się być sensowna. Chyba, że jest to taka blokada na rezerwowanie lokalu.
+Zerowa maksymalna liczba nocy nie wydaje się być sensowna. Chyba, że jest to taka blokada na rezerwowanie lokalu.
 
 #### Zmienna minimum_nights
 
@@ -199,7 +199,11 @@ Zerowa maksymalna liczban nocy nie wydaje się być sensowna. Chyba, że jest to
 
 <img src="./figures/minimum_nights_zoomed.png" alt="min_nights" width="500"/>
 
-Wartości większe niż 101 są bardzo rzadkie i nie są pokazane na wykresie. Dziwne trochę, że najczęciej występujaca liczba minimalnych nocy to 100 (czyli prawdopodobnie to są długoterminowe oferty).
+Wartości większe niż 101 są bardzo rzadkie i nie są pokazane na wykresie. Dziwne trochę, że najczęściej występująca liczba minimalnych nocy to 100 (czyli prawdopodobnie to są długoterminowe oferty).
+
+Pewna obserwacja:
+
+Wykres pokazuje, skąd potencjalnie może wynikać problem ze zmienną `price`. Ceny w danych są bardzo zróżnicowane, co utrudnia modelowanie, ale rozkład zmiennej minimum_nights sugeruje możliwą przyczynę tej rozbieżności. Wiele ofert ma wartość minimum_nights bliską 1, ale zauważalny jest też pik przy 100. Może to oznaczać, że `price` odnosi się do całkowitej ceny za minimalny okres pobytu, a nie za jedną noc. Najcześciej występująca cena wynosi około 4000, a najczęstsza wartość minimum_nights to 100, co po podzieleniu (4000 / 100) daje około 40 dolarów – wartość typową dla ceny za noc. To oczywiście tylko luźna obserwacja, która może wskazywać na potencjalny problem ze sposobem zapisu zmiennej `price`.
 
 #### Zmienna neighbourhood_cleaned
 
@@ -229,17 +233,9 @@ Poniżej pokazujemy pewne zależności w danych, które nas zaniepokoiły w pier
 
 </br>
 
-<img src="./figures/beds_and_bedrooms.png" alt="beds_and_bedrooms" width="500"/>
-
-Widać potencjalne problemy, gdy liczba łóżek jest mniejsza niż liczba sypialni oraz, gdy przy zerowej liczbie sypialni mamy niezerową liczbę łóżek.
-
-</br>
-
 <img src="./figures/accomodates_and_beds.png" alt="accomodates_and_beds" width="500"/>
 
-Widać potencjalne problemy, gdy liczba możliwych osób jest mniejsza od liczby łóżek oraz, gdy przy zerowej liczbie łóżek mamy niezerową liczbę osób, które mogą się zmieścić w lokalu.
-
-</br></br>
+Widać potencjalne problemy, np. gdy przy zerowej liczbie łóżek mamy niezerową liczbę osób, które mogą się zmieścić w lokalu albo jak mamy dużo większą liczbę osób niż łóżek (przykład: 2 łóżka -> 8 osób).
 
 Kolumna amentities - sprawdziliśmy, że jest 2057 unikalnych wartości. Dlatego zdecydowaliśmy się nie korzystać z tej kolumny, bo wymagałoby to dużo pracy, aby te dane doprowadzić do formy, która by nam odpowiadała.
 
@@ -255,11 +251,11 @@ Poprawka:
 
 We wszystkich dostępnych plikach występuje sporo braków w danych.
 
-W pliku `listings.txt`, który dla nas jest najważniejszy, tak wyglądają braki w danych:
+W pliku `listings.txt`, który jest dla nas najważniejszy, tak wyglądają braki w danych:
 
 <img src="./figures/listings_nulls.png" alt="listing_nulls" width="500"/>
 
-We wszystkich nas interesujących kolumnach występują braki na poziomie większym niż 15%.
+A we wszystkich interesujących nas kolumnach występują braki na poziomie większym niż 15%.
 
 <img src="./figures/interesting_data_nulls.png" alt="interesting_data_nulls" width="500"/>
 
@@ -283,7 +279,9 @@ W przypadku zmiennej ciągłej price oraz kategorycznych zmiennych wejściowych 
 
 </br>
 
-Atrybuty, które potencjalnie braliśmy pod uwagę, niosą pewną informację względem zmiennej celu. Wyjątkiem jest atrybut `max_nights`, którego nie planujemy używać, biorąc pod uwagę uzyskaną korelację.
+Atrybuty, które potencjalnie braliśmy pod uwagę, niosą pewną informację względem zmiennej celu.
+
+Wyjątkiem jest atrybut `max_nights`, z którego zdecydowaliśmy się nie korzystać, biorąc pod uwagę jego korelacje ze zmienną celu (0.0061).
 
 ## Aktualizacja oceny wykonalności
 

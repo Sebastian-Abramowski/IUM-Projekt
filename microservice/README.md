@@ -1,6 +1,6 @@
 # Mikroserwis
 
-Porty:
+Porty
 
 ```
 aplikacja: 7777
@@ -12,4 +12,12 @@ Przygotowanie środowiska do uruchomienia
 ```
 python -mv venv venv
 ./venv/Scrips/activate
+```
+
+Uruchomienie mikroserwisu
+
+```
+make install
+make db-up
+make run
 ```

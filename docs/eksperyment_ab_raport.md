@@ -4,7 +4,7 @@ W ramach kolejnego etapu projektu naszym zadaniem było umożliwienie przeprowad
 który pozwala porównać jakość działania dwóch modeli predykcyjnych:
 modelu bazowego (`Linear Regression`) oraz modelu zaawansowanego (`Random Forest`).
 
-Dzięki temu możliwe było sprawdzenie, jak oba modele radzą sobie w warunkach produkcyjnych
+Dzięki temu możliwe byłoby sprawdzenie, jak oba modele radzą sobie w warunkach produkcyjnych
 oraz który z nich generuje bardziej trafne i stabilne predykcje.
 
 ### Mikroserwis
@@ -48,7 +48,7 @@ Zasymulowaliśmy przeprowadzanie eksperymentu A/B przy użyciu `Postmana` w nast
 ### Analiza
 
 Poza wcześniejszym podsumowaniem przygotowaliśmy również prostą wizualizację
-wyników sztucznego eksperymentu A/B - wykres boxplot,
+wyników `sztucznego eksperymentu A/B` - wykres boxplot,
 który pokazuje rozkłady błędów predykcji dla obu modeli.
 
 <img src="./figures/ab/ab_boxplot.png" alt="ab_boxplot" width="500"/>
@@ -60,9 +60,9 @@ aby upewnić się, że zaobserwowane różnice w skuteczności modeli nie wynika
 
 ### Przechowywanie danych eksperymentu
 
-Dane z eksperymentu A/B przeechowywane są w dwóch tabelach `Predction` oraz `Decision`
+Dane z eksperymentu A/B przechowywane są w dwóch tabelach `Predction` oraz `Decision`
 
-Przykład danych:
+Przykłady danych:
 
 - tabela `Predicton`
 
