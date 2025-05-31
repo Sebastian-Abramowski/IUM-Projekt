@@ -16,6 +16,8 @@ Przed:
 
 </br>
 
+---
+
 Po:
 
 <img src="./figures/interesting_data_nulls_v2.png" alt="bathrooms" width="500"/>
@@ -34,11 +36,12 @@ Przed:
 
 </br>
 
+---
+
 Po:
 
 <img src="./figures/price_describes_v2.png" alt="bathrooms" width="125"/>
 
-</br>
 </br>
 
 Statystyki opisowe zmiennej `price` w dużej mierze pozostają podobne, z wyjątkiem wyraźnie wyższej wartości maksymalnej w nowym zbiorze.
@@ -50,6 +53,8 @@ Przed:
 <img src="./figures/price.png" alt="bathrooms" width="500"/>
 
 </br>
+
+---
 
 Po:
 
@@ -83,7 +88,7 @@ Na nowych danych:
 
 ## Wnioski
 
-Zaobserwowaliśmy nieznaczny wzrost jakości predykcji po przetrenowaniu modelu na nowych, liczniejszych i lepszej jakości danych.
+Zaobserwowaliśmy nieznaczny wzrost jakości predykcji po przetrenowaniu modeli na nowych, liczniejszych i lepszej jakości danych.
 Co prawda błędy MAE i RMSE uległy poprawie, jednak skala poprawy była mniejsza niż oczekiwaliśmy. Najprawdopodobniej wynika to z faktu, że mierzone korelacje pomiędzy atrybutami, jak również ich rozkłady, nie uległy istotnym zmianom, a więc już w starszym, mniejszym zbiorze danych dobrze widoczne były główne zależności.
 
 Można więc wnioskować, że niewielka poprawa jakości i zwiększenie liczby danych przełożyła się na niewielkie, ale zauważalne polepszenie predykcji.
