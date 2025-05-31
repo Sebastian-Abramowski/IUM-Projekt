@@ -39,8 +39,9 @@ Po:
 <img src="./figures/price_describes_v2.png" alt="bathrooms" width="125"/>
 
 </br>
+</br>
 
-Statystyki opisowe price w dużej mierze pozostają podobne, z wyjątkiem wyraźnie wyższej wartości maksymalnej w nowym zbiorze.
+Statystyki opisowe zmiennej `price` w dużej mierze pozostają podobne, z wyjątkiem wyraźnie wyższej wartości maksymalnej w nowym zbiorze.
 
 ### Rozkład zmiennej price
 
