@@ -60,7 +60,7 @@ aby upewnić się, że zaobserwowane różnice w skuteczności modeli nie wynika
 
 ### Przechowywanie danych eksperymentu
 
-Dane z eksperymentu A/B przechowywane są w dwóch tabelach `Predction` oraz `Decision`
+Dane z eksperymentu A/B przechowywane są w dwóch tabelach `Prediction` oraz `Decision`
 
 Przykłady danych:
 

@@ -4,7 +4,7 @@ Analiza powstała na podstawie notebook'u o nazwie `IUM_etap1_etap2_na_danych_V2
 
 Otrzymane nowe dane są wyższej jakości — zawierają mniej braków, a niektóre kolumny przyjmują teraz bardziej sensowne wartości (np. kolumna oznaczająca liczbę łazienek nie zawiera już wartości niecałkowitych).
 
-Zależności pomiędzy atrybutami a zmienną celu nie uległy znaczącej zmianie w porównaniu do poprzedniego zbioru, co jest dobrą wiadomością — oznacza to, że dotychczasowe modele opierały się na stabilnych wzorcach.
+Zależności pomiędzy atrybutami a zmienną celu nie uległy znaczącej zmianie w porównaniu do poprzedniego zbioru, co jest dobrą wiadomością — oznacza to, że dotychczasowe modele opierały się na prawidłowych wzorcach.
 
 Jeśli zauważyliśmy jakiekolwiek zmiany w rozkładach cech (np. w przypadku zmiennej price), to miały one charakter naturalny i wynikały głównie z faktu, że nowy zbiór danych jest znacznie większy. Dzięki temu mamy dokładniejszy i pełniejszy obraz rzeczywistych wartości.
 
@@ -20,6 +20,10 @@ Po:
 
 <img src="./figures/interesting_data_nulls_v2.png" alt="bathrooms" width="500"/>
 
+</br>
+
+W nowych danych mamy procentowo mniej braków oraz trzykrotnie większy zbiór, dzięki czemu dysponujemy większą liczbą danych do analizy.
+
 ## Porównanie zmiennej celu `price`
 
 ### Tabela statystyk opisowych
@@ -33,6 +37,10 @@ Przed:
 Po:
 
 <img src="./figures/price_describes_v2.png" alt="bathrooms" width="125"/>
+
+</br>
+
+Statystyki opisowe price w dużej mierze pozostają podobne, z wyjątkiem wyraźnie wyższej wartości maksymalnej w nowym zbiorze.
 
 ### Rozkład zmiennej price
 
@@ -50,11 +58,11 @@ Po:
 
 Początkowo wszystkie nasze modele zwracały znacznie gorsze wyniki niż wcześniej. Wynikało to z faktu, że wraz z nowymi danymi otrzymaliśmy również większą liczbę skrajnych wartości zmiennej price. Zmianę tę szczególnie było widać w błędzie RMSE, który silnie reaguje na duże błędy predykcji.
 
-Aby rzetelnie porównać modele, zdecydowaliśmy się ograniczyć zbiór testowy do obserwacji, dla których price nie przekracza 95. percentyla, aby uzyskać bardziej reprezentatywną ocenę modelu. Dla uczciwego porównania dokonaliśmy tego samego ograniczenia także w przypadku starych danych.
+Aby rzetelnie porównać modele, zdecydowaliśmy się ograniczyć zbiór testowy do danych, dla których price nie przekracza 95. percentyla, aby uzyskać bardziej reprezentatywną ocenę modelu. Dla uczciwego porównania dokonaliśmy tego samego ograniczenia także w przypadku starych danych.
 
 Uważamy, że odrzucenie skrajnych wartości przy ocenie jakości modelu jest dobrym podejściem - w praktyce znacznie istotniejsze jest to, by model dobrze radził sobie w typowych przypadkach, a niekoniecznie dla ekstremalnych, rzadkich obserwacji.
 
-### Wyniki na zbiorze testowym ograniczonym do 95. percentyla zmiennej price:
+### Wyniki na zbiorze testowym ograniczonym do 95. percentyla zmiennej price
 
 Na starych danych:
 
