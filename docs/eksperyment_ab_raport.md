@@ -64,7 +64,7 @@ Dane z eksperymentu A/B przechowywane są w dwóch tabelach `Prediction` oraz `D
 
 Przykłady danych:
 
-- tabela `Predicton`
+- tabela `Prediction`
 
 ![prediction_data_example](./figures/ab/prediction_table_example.png)
 
